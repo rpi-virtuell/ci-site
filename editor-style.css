@@ -1,0 +1,6 @@
+*::selection,
+*::-moz-selection,
+.mce-content-body p::selection,
+.mce-content-body p::-moz-selection {
+    color: #fff;
+}
