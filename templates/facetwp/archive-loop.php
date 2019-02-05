@@ -4,6 +4,7 @@
  */
 
 	$fwp_tmpl = get_facetwp_pots_type_template_slug();
+	//var_dump($fwp_tmpl);
 
 ?>
 	<div class="ddl-full-width-row row">
@@ -19,18 +20,22 @@
 		</div>
 		<div class="col-sm-3 filter">
 			<div class="sidebarBox">
-				<h3>Arbeitsbereiche</h3>
 				<?php echo facetwp_display( 'facet', 'arbeitsbereiche' );?>
 			</div>
 			<div class="sidebarBox">
-				<h3>Themen</h3>
 				<?php echo facetwp_display( 'facet', 'themen' );?>
 			</div>
-			<?php if ('product' == $fwp_tmpl): ?>
+            <div class="sidebarBox">
+				<?php //echo facetwp_display( 'facet', 'categories' );?>
+            </div>
+			<?php if (is_shop() || 'all-results' == $fwp_tmpl ): ?>
 				<div class="sidebarBox">
-					<h3>Medium</h3>
-					<?php echo facetwp_display( 'facet', 'medientyp' );?>
+					<?php echo facetwp_display( 'facet', 'medientypen' );?>
 				</div>
+                <div class="sidebarBox">
+                    <?php echo facetwp_display( 'facet', 'inhaltsbereiche' );?>
+                </div>
+
 			<?php endif; ?>
 		</div>
 	</div>
