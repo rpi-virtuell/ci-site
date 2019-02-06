@@ -68,35 +68,6 @@ function testhook()
 
 /* Woocommerce Hooks End #############################################*/
 
-/**
- * Display a custom taxonomy dropdown in admin
- * @author Mike Hemberger
- * @link http://thestizmedia.com/custom-post-type-filter-admin-custom-taxonomy/
- *
- * add_action('restrict_manage_posts', 'tsm_filter_post_type_by_taxonomy');
- * function tsm_filter_post_type_by_taxonomy() {
- * global $typenow;
- * $post_type = 'post'; // change to your post type
- * $taxonomy  = 'section'; // change to your taxonomy
- * if ($typenow == $post_type) {
- * $selected      = isset($_GET[$taxonomy]) ? $_GET[$taxonomy] : '';
- * $info_taxonomy = get_taxonomy($taxonomy);
- * wp_dropdown_categories(array(
- * 'show_option_all' => __("All")." ".$info_taxonomy->label,
- * 'taxonomy'        => $taxonomy,
- * 'name'            => $taxonomy,
- * 'orderby'         => 'name',
- * 'selected'        => $selected,
- * 'show_count'      => 1,
- * 'hierarchical'    => true,
- * 'hide_if_empty'   => true,
- * 'value_field'      => 'slug'
- *
- * ));
- * };
- * }
- *
- */
 
 /**
  * Displays dropdown filterboxes for each Term an each posttype in admin post columns
@@ -161,12 +132,12 @@ function ci_admin_add_taxonomy_dropdown_filters()
 	* Template Hooks
 	* @see woocomerce plugin: includes/wc_template_hooks.php
 */
-
+/*
 function woocommerce_template_loop_product_title() {
 		echo '<h2 class="woocommerce-loop-product__title">' . $content . '</h2>';
 		echo wp_trim_words( get_the_content(), $num_words = 15, $more = '<br>Mehr ..' );
 }
-
+*/
 /**
    Customizr prevents, to load the woocommerce/archive-product.php  template from childtheme
    this Hack do the job
@@ -177,6 +148,7 @@ function template_load_archive_page($template){
 
 	  $template = get_stylesheet_directory( ). '/woocommerce/archive-product.php' ;
 
+
 	}
 	return $template;
 }
@@ -184,6 +156,7 @@ function template_load_archive_page($template){
 /**
  * Erweitert Toolset um nach posttypes zu filtern
  */
+/*
 add_action( 'pre_get_posts', 'post_type_filter_func', 1 );
 function post_type_filter_func( $query) {
 
@@ -199,6 +172,7 @@ function post_type_filter_func( $query) {
 
 
 }
+*/
 
 /**
  * Füge "Einträge" an die Anzahl der Suchtreffer
@@ -327,6 +301,64 @@ add_shortcode( 'ci_article_teaser' , 'print_loop_post' );
 function print_loop_post($atts){
 
 	load_templatepart('facetwp/archive-loop.php');
+
+}
+
+
+function get_query_all_tax_in_tax($resulttax = 'thema', $filtertax='section'){
+
+	$terms = get_terms( array(
+		'taxonomy' => $resulttax,
+		'hide_empty' => false,
+	) );
+
+    $slugs = array();
+	foreach ($terms as  $term){
+		$slugs[]=$term->slug;
+    }
+
+	$args = array(
+	    'posts_per_page' => 100000,
+        'post_type' =>'any',
+		'tax_query' => array(
+			array(
+				'relation' => 'AND',
+				array(
+					'taxonomy' => $filtertax,
+					'field'    => 'slug',
+					'terms'    => array( get_query_var( $filtertax ) ),
+				),
+				array(
+					'taxonomy' => $resulttax,
+					'field'    => 'slug',
+					'terms'    => $slugs
+
+				),
+			),
+		),
+	);
+	$pp = new WP_Query( $args );
+	$tax_ids = array();
+	if ( $pp->have_posts() ) {
+		while ( $pp->have_posts() ) {
+			$pp->the_post();
+			$tax_ids =  array_merge(wp_get_object_terms(get_the_ID(), $resulttax,  array('fields' => 'slugs')),$tax_ids);
+		}
+		/* Restore original Post Data */
+		wp_reset_postdata();
+	}
+	$tax_ids = array_unique($tax_ids);
+	sort($tax_ids);
+
+    $list_elements = '';
+	foreach ($terms as  $term){
+		if (in_array($term->slug, $tax_ids)){
+
+            $list_elements .= '<li><a href="/'.$resulttax.'/'.$term->slug.'">' . $term->name . '</a></li>';
+
+		}
+	}
+	return '<ul>' .$list_elements. '</ul>';
 
 }
 

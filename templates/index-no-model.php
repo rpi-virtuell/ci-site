@@ -85,7 +85,7 @@
                     if ( ! czr_fn_is_home_empty() ) {
                         if ( have_posts() && ! is_404() ) {
 						
-							if( function_exists('facetwp_display') && is_archive() ){
+							if( function_exists('facetwp_display') && is_post_type_archive(array('network','publikation','project','product')) ){
 
 							    load_templatepart('facetwp/archive-loop.php');
 

@@ -57,7 +57,7 @@ if ( woocommerce_product_loop() ) {
 
 
 
-	if( !is_page() && function_exists('facetwp_display') ){
+	if( !is_tax() && !is_page() && function_exists('facetwp_display') ){
 		/**
 		 *  facet_wp injection
 		 */
@@ -68,20 +68,48 @@ if ( woocommerce_product_loop() ) {
 
 		woocommerce_product_loop_start();
 
-		if ( wc_get_loop_prop( 'total' ) ) {
-			while ( have_posts() ) {
-				the_post();
+		?>
+        <div class="ddl-full-width-row row">
+            <div class="col-sm-9 results">
+                <?php
 
-				/**
-				 * Hook: woocommerce_shop_loop.
-				 *
-				 * @hooked WC_Structured_Data::generate_product_data() - 10
-				 */
-				do_action( 'woocommerce_shop_loop' );
+                if ( wc_get_loop_prop( 'total' ) ) {
 
-				wc_get_template_part( 'content', 'product' );
-			}
-		}
+
+                    while ( have_posts() ) {
+                        the_post();
+
+                        /**
+                         * Hook: woocommerce_shop_loop.
+                         *
+                         * @hooked WC_Structured_Data::generate_product_data() - 10
+                         */
+                        do_action( 'woocommerce_shop_loop' );
+
+                        //wc_get_template_part( 'content', 'product' );
+                        include get_stylesheet_directory( ) . "/templates/facetwp/loop-post.php";
+                    }
+                }
+
+                ?>
+            </div>
+            <div class="col-sm-3 filter sidebarBox">
+            <?php
+                if (!is_tax( 'section' )):
+                    echo '<h3>Verbundene Arbeits- und Aufgabenbereiche</h3>';
+                    echo get_query_all_tax_in_tax('section', 'thema');
+                endif;
+
+                if (!is_tax( 'thema' )):
+
+                    echo '<h3>Verbundene Themen</h3>';
+	                echo get_query_all_tax_in_tax('thema', 'section');
+                endif;
+             ?>
+            </div>
+        </div>
+		<?php
+
 	}
 
 	/**
