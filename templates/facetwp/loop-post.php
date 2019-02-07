@@ -14,10 +14,10 @@
             </div>
         </div>
         <div class="col-sm-9">
+            <div class="datum" style="float: right"><?php print_entry_date(); ?></div>
             <header class="entry-header">
                 <div>
-                    <span class="datum content-type"><?php echo get_content_type(); ?></span>
-                    <span class="datum"><?php print_entry_date(); ?></span>
+                    <span class="content-type"><?php echo get_content_type(); ?></span>
                     <span>
                         <?php echo get_the_term_list( $post->ID, 'thema', '<span class="thema-taxonomy entry-taxonomy"> &bull; Themenbereich: ', ', ', '</span>' ); ?>
                     </span>

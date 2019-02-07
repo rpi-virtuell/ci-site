@@ -2,10 +2,7 @@
 /**
  * facetwp injection
  */
-
-	$fwp_tmpl = get_facetwp_pots_type_template_slug();
-	//var_dump($fwp_tmpl);
-
+  global $fwp_template_name;
 ?>
 	<div class="ddl-full-width-row row">
 		<div style="clear: both; width:100%">
@@ -15,7 +12,7 @@
 		</div>
 		<div class="col-sm-9 results">
 			<?php echo facetwp_display( 'pager' ); ?>
-			<?php echo facetwp_display( 'template', "$fwp_tmpl" );?>
+			<?php echo facetwp_display( 'template', "$fwp_template_name" );?>
 			<?php echo facetwp_display( 'pager' ); ?>
 		</div>
 		<div class="col-sm-3 filter">

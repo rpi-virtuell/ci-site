@@ -207,23 +207,26 @@ function print_post_image( $dummy = "https://dummyimage.com/140x140/eeeeee/fffff
 function print_entry_date() {
 
     $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-
+/*
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
 	}
-
+*/
 	$time_string = sprintf(
 		$time_string,
-		esc_attr( ( 'm.Y' ) ),
-		get_the_date(),
-		esc_attr( get_the_modified_date( 'c' ) ),
-		get_the_modified_date()
+		esc_attr( ( 'c' ) ),
+		get_the_date( 'M Y'),
+		esc_attr( get_the_modified_date( 'c') ),
+		get_the_modified_date('M Y' )
 	);
 
+
 	printf(
-		'<span class="posted-on"><span class="screen-reader-text">%1$s </span><a href="%2$s" rel="bookmark">%3$s</a></span>',
-		esc_url( get_permalink() ),
+		'<span class="posted-on"><span class="screen-reader-text">%1$s</span><a href="%2$s" rel="bookmark">%3$s</a></span>',
+		__( 'Posted on' ),
+        esc_url( get_permalink() ),
 		$time_string
+
 	);
 }
 
@@ -258,13 +261,13 @@ function get_content_type(){
 	return $postType;
 }
 
-function get_facetwp_pots_type_template_slug(){
+function get_facetwp_pots_type_template_slug($archive = 'archive'){
 
     $type = get_queried_object();
 	$slug = str_replace('/','',$type->rewrite['slug'] );
 	
 	if(is_shop()){
-		$slug =   'product';  
+		return 'product';
     }
 	switch( strtolower($slug)){
 		case 'product':
@@ -278,18 +281,31 @@ function get_facetwp_pots_type_template_slug(){
 		    return $slug;
 			break;
         default:
-	        return 'all-results';
+	        return $archive;
 
 	}
 }
 
-function load_templatepart($file){
-	if ( $template = locate_template( 'templates/'. $file  ) ) {
-	    load_template( $template );
+function load_templatepart($file, $template_name = false){
+
+    global $fwp_template_name;
+	if ( $template_file = locate_template( 'templates/'. $file  ) ) {
+		$fwp_template_name = $template_name;
+		require_once( $template_file );
+
 	}else{
 	    echo "file error: Template not found!";
     }
 }
+
+function the_archive_loop( $default = 'archive'){
+
+	$template_name = get_facetwp_pots_type_template_slug($default);
+
+	load_templatepart('facetwp/archive-loop.php', $template_name);
+
+}
+add_shortcode( 'ci_article_teaser' , 'the_archive_loop' );
 
 
 function include_facetwp_article(){
@@ -297,12 +313,8 @@ function include_facetwp_article(){
 }
 
 
-add_shortcode( 'ci_article_teaser' , 'print_loop_post' );
-function print_loop_post($atts){
 
-	load_templatepart('facetwp/archive-loop.php');
 
-}
 
 
 function get_query_all_tax_in_tax($resulttax = 'thema', $filtertax='section'){
@@ -407,3 +419,7 @@ add_action( 'wp_head', 'fwp_add_facet_labels', 100 );
 
  */
 
+add_action( 'init', 'my_cpt_init' );
+function my_cpt_init() {
+	//flush_rewrite_rules();
+}

@@ -1,13 +1,11 @@
 /*
-Theme Name:     Comenius
-Theme URI:      https://github.com/rpi-virtuell/ci-site
-Description:    A child theme for the Customizr WordPress theme.
-Author:         CI -muenster
-Author URI:     http://comenius.de
+Theme Name:     Customizr Child
+Theme URI:      http://themesandco.com/customizr
+Description:    A child theme for the Customizr WordPress theme. This child theme simply includes 2 files : style.css to add your custom css and functions.php where you can extend Customizr's core code. In order to keep your code as clean and flexible as possible, try to use Customizr's hooks API for your customizations. Do something awesome and have fun !
+Author:         Nicolas Guillaume (nikeo)
+Author URI:     http://themesandco.com
 Template:       customizr-pro
-GitHub Theme URI: https://github.com/rpi-virtuell/ci-site
-GitHub Branch:  master
-Version:        0.0.1
+Version:        1.0.0
 */
 /* Farben */
 /*

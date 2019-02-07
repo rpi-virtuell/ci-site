@@ -61,10 +61,12 @@ if ( woocommerce_product_loop() ) {
 		/**
 		 *  facet_wp injection
 		 */
-		load_templatepart('facetwp/archive-loop.php');
+		the_archive_loop();
 	} else {
 
+
 	    do_action( 'woocommerce_before_shop_loop' );
+		do_action( 'woocommerce_after_shop_loop' );
 
 		woocommerce_product_loop_start();
 
@@ -93,18 +95,31 @@ if ( woocommerce_product_loop() ) {
 
                 ?>
             </div>
-            <div class="col-sm-3 filter sidebarBox">
+            <div class="col-sm-3 filter">
             <?php
+
+                if (is_tax( 'section' )):
+                    echo '<div class="sidebarBox">';
+                    echo '<h3>Mitwirkende</h3>';
+                    echo render_view(array('name'=>'personen-in-arbeitsbereichen'));
+	                echo '</div>';
+                endif;
+
                 if (!is_tax( 'section' )):
+	                echo '<div class="sidebarBox">';
                     echo '<h3>Verbundene Arbeits- und Aufgabenbereiche</h3>';
                     echo get_query_all_tax_in_tax('section', 'thema');
+	                echo '</div>';
                 endif;
 
                 if (!is_tax( 'thema' )):
-
-                    echo '<h3>Verbundene Themen</h3>';
+	                echo '<div class="sidebarBox">';
+	                echo '<h3>Verbundene Themen</h3>';
 	                echo get_query_all_tax_in_tax('thema', 'section');
+	                echo '</div>';
                 endif;
+
+
              ?>
             </div>
         </div>

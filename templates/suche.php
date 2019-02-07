@@ -83,7 +83,7 @@ do_action('__before_main_wrapper')
 						 */
 						if( function_exists('facetwp_display') && is_page() ){
 
-							load_templatepart('facetwp/archive-loop.php');
+							the_archive_loop('all-results');
 
 						} else {
 							czr_fn_render_template('loop');
