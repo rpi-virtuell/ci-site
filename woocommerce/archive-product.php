@@ -99,11 +99,19 @@ if ( woocommerce_product_loop() ) {
             <?php
 
                 if (is_tax( 'section' )):
+	                print_parent_arbeitsbreich();
                     echo '<div class="sidebarBox">';
                     echo '<h3>Mitwirkende</h3>';
                     echo render_view(array('name'=>'personen-in-arbeitsbereichen'));
 	                echo '</div>';
                 endif;
+
+		        if (is_tax( 'thema' )){
+			        echo '<div class="sidebarBox">';
+			        echo '<h3>Mitwirkende</h3>';
+			        echo render_view(array('name'=>'personen-in-themenbereichen'));
+			        echo '</div>';
+                }
 
                 if (!is_tax( 'section' )):
 	                echo '<div class="sidebarBox">';

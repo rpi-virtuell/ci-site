@@ -230,6 +230,32 @@ function print_entry_date() {
 	);
 }
 
+function print_parent_arbeitsbreich(){
+	if ( is_tax('section') ) {
+		echo '<div class="sidebarBox">';
+		// Get the current section term id.
+		$query_obj = get_queried_object();
+		$term_id   = $query_obj->term_id;
+		if(get_ancestors($term_id, 'section', 'taxonomy')){
+
+			echo '<h3>Arbeitsbereich</h3>';
+			echo get_term_parents_list( $term_id, 'section',array('inclusive'=>false,'separator'=>'<br>' ) );
+
+        }else{
+			echo '<h3>Aufgabenbereiche</h3>';
+			echo '<ul>';
+			$term_children = get_term_children( $term_id, 'section' ) ;
+			rsort($term_children);
+            foreach ( $term_children as $child ) {
+                $term = get_term_by( 'id', $child, 'section' );
+                echo '<li><a href="' . get_term_link( $child, 'section' ) . '">' . $term->name . '</a></li>';
+            }
+            echo '</ul>';
+        }
+		echo '</div>';
+	}
+}
+
 function get_content_type(){
 	$postType = get_post_type( get_the_ID() );
 	switch( strtolower($postType)){
@@ -396,30 +422,26 @@ function fwp_add_facet_labels() {
 }
 add_action( 'wp_head', 'fwp_add_facet_labels', 100 );
 
+
 /**
- * replaces post_type dynamicaly
- * but there is an unsolved issue with ajax
- * so we do not use ist at this time
-
-    add_filter( 'facetwp_query_args', function( $query_args, $class ) {
-
-        global $query;
-
-        if(get_query_var("post_type")){
-            $type = get_queried_object();
-            $post_type = str_replace('/','',$type->rewrite['slug'] );
-
-            if(post_type_exists($post_type) &&  'all-results' == $class->ajax_params['template'] ){
-                $query_args['post_type'] = $post_type;
-            }
-
-        }
-        return $query_args;
-    }, 10, 2 );
-
+ * Modifiziert den loop in der product-archive.php
+ * keine personen und seiten anzeigen
  */
 
-add_action( 'init', 'my_cpt_init' );
-function my_cpt_init() {
-	//flush_rewrite_rules();
+function modify_poduct_archive_query( $query ) {
+	if ( $query->is_tax() && $query->is_main_query() ) {
+
+		$query->set('post_type',array(
+		        'post',
+		        'product',
+		        'project',
+		        'network',
+		        'termin',
+		        'publikation',
+        ));
+	}
+
 }
+add_action( 'pre_get_posts', 'modify_poduct_archive_query' );
+
+
