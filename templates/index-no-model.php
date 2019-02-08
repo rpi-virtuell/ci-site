@@ -39,7 +39,7 @@
                 else //pages and fallback
                   $_heading_template = 'content/singular/headings/page_heading';
 
-                czr_fn_render_template( $_heading_template );
+               //czr_fn_render_template( $_heading_template );
               ?>
             </div>
           <?php endif ?>

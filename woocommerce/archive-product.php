@@ -34,14 +34,8 @@ do_action( 'woocommerce_before_main_content' );
 	<?php endif; ?>
 
 	<?php
-	/**
-	 * Hook: woocommerce_archive_description.
-	 *
-	 * @hooked woocommerce_taxonomy_archive_description - 10
-	 * @hooked woocommerce_product_archive_description - 10
-	 */
-	do_action( 'woocommerce_archive_description' );
-	
+
+
 	?>
 </header>
 <?php
@@ -58,6 +52,7 @@ if ( woocommerce_product_loop() ) {
 
 
 	if( !is_tax() && !is_page() && function_exists('facetwp_display') ){
+
 		/**
 		 *  facet_wp injection
 		 */
@@ -65,14 +60,30 @@ if ( woocommerce_product_loop() ) {
 	} else {
 
 
-	    do_action( 'woocommerce_before_shop_loop' );
-		do_action( 'woocommerce_after_shop_loop' );
 
-		woocommerce_product_loop_start();
+
+
+		//woocommerce_product_loop_start();
 
 		?>
         <div class="ddl-full-width-row row">
-            <div class="col-sm-9 results">
+            <div class="col-lg-9 results">
+
+                <?php
+                /**
+                 * Hook: woocommerce_archive_description.
+                 *
+                 * @hooked woocommerce_taxonomy_archive_description - 10
+                 * @hooked woocommerce_product_archive_description - 10
+                 */
+                do_action( 'woocommerce_archive_description' );
+
+                // woocommerce_results count
+                //do_action( 'woocommerce_before_shop_loop' );
+
+
+                ?>
+                <h1 class="loop-title">Aktuelles</h1>
                 <?php
 
                 if ( wc_get_loop_prop( 'total' ) ) {
@@ -92,55 +103,70 @@ if ( woocommerce_product_loop() ) {
                         include get_stylesheet_directory( ) . "/templates/facetwp/loop-post.php";
                     }
                 }
+                /**
+                 * Hook: woocommerce_after_shop_loop.
+                 *
+                 * @hooked woocommerce_pagination - 10
+                 */
+                do_action( 'woocommerce_after_shop_loop' );
 
                 ?>
             </div>
-            <div class="col-sm-3 filter">
-            <?php
+            <div class="col-lg-3 archive-sidebar">
+                <div class="sideBarWrapper">
+                    <?php
 
-                if (is_tax( 'section' )):
-	                print_parent_arbeitsbreich();
-                    echo '<div class="sidebarBox">';
-                    echo '<h3>Mitwirkende</h3>';
-                    echo render_view(array('name'=>'personen-in-arbeitsbereichen'));
-	                echo '</div>';
-                endif;
+                        if (is_tax( 'section' )){
+                            print_parent_arbeitsbereich('h2');
+                            echo '<div class="sidebarBox">';
+                            echo    '<h2>Mitwirkende</h2>';
+	                        echo    '<div class="personen-sidebar">';
+                            echo            render_view(array('name'=>'personen-in-arbeitsbereichen'));
+                            echo    '</div>';
+                            echo '</div>';
 
-		        if (is_tax( 'thema' )){
-			        echo '<div class="sidebarBox">';
-			        echo '<h3>Mitwirkende</h3>';
-			        echo render_view(array('name'=>'personen-in-themenbereichen'));
-			        echo '</div>';
-                }
+	                        echo '<div class="sidebarBox">';
+	                        echo '<h2>Verbundene Themenbereiche</h2>';
+	                        echo get_query_all_tax_in_tax('thema', 'section');
+	                        echo '</div>';
 
-                if (!is_tax( 'section' )):
-	                echo '<div class="sidebarBox">';
-                    echo '<h3>Verbundene Arbeits- und Aufgabenbereiche</h3>';
-                    echo get_query_all_tax_in_tax('section', 'thema');
-	                echo '</div>';
-                endif;
+	                        echo '<div class="sidebarBox networks">';
+	                        echo render_view(array('name'=>'netzwerke-in-arbeitsbereichen'));
+	                        echo '</div>';
 
-                if (!is_tax( 'thema' )):
-	                echo '<div class="sidebarBox">';
-	                echo '<h3>Verbundene Themen</h3>';
-	                echo get_query_all_tax_in_tax('thema', 'section');
-	                echo '</div>';
-                endif;
+                        }
+
+                        if (is_tax( 'thema' )){
+
+	                        print_parent_themenbereich('h2');
+	                        echo '<div class="sidebarBox">';
+                            echo '<h2>Mitwirkende</h2>';
+                            echo render_view(array('name'=>'personen-in-themenbereichen'));
+                            echo '</div>';
+
+	                        echo '<div class="sidebarBox">';
+	                        echo '<h2>Verbundene Bereiche und Aufgaben</h2>';
+	                        echo get_query_all_tax_in_tax('section', 'thema');
+	                        echo '</div>';
+
+	                        echo '<div class="sidebarBox networks">';
+	                        echo render_view(array('name'=>'netzwerke-in-themenbereichen'));
+	                        echo '</div>';
+                        }
 
 
-             ?>
+
+
+
+                    ?>
+                </div>
             </div>
         </div>
 		<?php
 
 	}
 
-	/**
-	 * Hook: woocommerce_after_shop_loop.
-	 *
-	 * @hooked woocommerce_pagination - 10
-	 */
-	do_action( 'woocommerce_after_shop_loop' );
+
 } else {
 	/**
 	 * Hook: woocommerce_no_products_found.

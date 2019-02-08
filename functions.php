@@ -183,13 +183,18 @@ add_filter( 'facetwp_result_count', function( $output, $params ) {
 
 /* template helper */
 
-function print_excerpt( $class = 'entry-summary' ) {
+function print_excerpt($wordscount=20, $class = 'entry-summary' ) {
 
     $class = esc_attr( $class );
-
-	?>
+    ?>
 		<div class="<?php echo $class; ?>">
-			<?php the_excerpt(); ?>
+			<?php
+                if(has_excerpt()){
+                    echo get_the_excerpt();
+                }else{
+	                echo wp_trim_words( get_the_content(), $wordscount );
+                }
+            ?>
 		</div><!-- .<?php echo $class; ?> -->
 	<?php
 
@@ -229,8 +234,19 @@ function print_entry_date() {
 
 	);
 }
-
-function print_parent_arbeitsbreich(){
+function print_parent_themenbereich($header= "h3") {
+	if ( is_tax( 'thema' ) ) {
+		echo '<div class="sidebarBox">';
+		// Get the current section term id.
+		$query_obj = get_queried_object();
+		$term_id   = $query_obj->term_id;
+		$term = get_term($term_id);
+		echo '<'.$header.'>Themenbereich</'.$header.'>';
+		echo '<p>'.$term->name.'</p>';
+		echo '</div>';
+	}
+}
+function print_parent_arbeitsbereich($header= "h3"){
 	if ( is_tax('section') ) {
 		echo '<div class="sidebarBox">';
 		// Get the current section term id.
@@ -238,11 +254,16 @@ function print_parent_arbeitsbreich(){
 		$term_id   = $query_obj->term_id;
 		if(get_ancestors($term_id, 'section', 'taxonomy')){
 
-			echo '<h3>Arbeitsbereich</h3>';
-			echo get_term_parents_list( $term_id, 'section',array('inclusive'=>false,'separator'=>'<br>' ) );
+			$term = get_term($term_id);
 
+			echo '<'.$header.'>Arbeitsbereich<br>';
+			echo get_term_parents_list( $term_id, 'section',array('inclusive'=>false,'separator'=>'<br>' ) );
+			echo '</'.$header.'>';
+			echo '<p><strong>Aufgabenbereich:</strong><br>'.
+			     $term->name;
+                 '</p>';
         }else{
-			echo '<h3>Aufgabenbereiche</h3>';
+			echo '<'.$header.'>Aufgaben</'.$header.'>';
 			echo '<ul>';
 			$term_children = get_term_children( $term_id, 'section' ) ;
 			rsort($term_children);

@@ -307,6 +307,7 @@ body {
     padding: 1rem;
     border: 1px solid rgba(0, 0, 0, 0.075);
 
+
     /*  -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
       -moz-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
       box-shadow: inset 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;*/
@@ -476,6 +477,9 @@ a:hover {
     background-position: 0 3px;
     background-image: url("icons/Entypo/blue/SVG/direction.svg");
 }
+#content .image-link[href*="//"]:not([href*="singlesite.comenius.de"])::before {
+    background-image: none;
+}
 /* Overrides for Toolset and Customizr Classes */
 .entry-title,
 .woocommerce .woocommerce-products-header .page-title,
@@ -490,6 +494,9 @@ a:hover {
     font-size: 0.9rem;
     line-height: 1.5;
 }
+
+
+
 /* Pagination overrides */
 
 .wpv-archive-pagination-nav-links-container {
@@ -1093,6 +1100,49 @@ section .homeNewsSection .row{
 }
 
 
+/* Taxonomie Archive  product-archive.php*/
+.term-description{
+    padding:10px;
+    background-color: #eee;
+    margin-bottom: 40px;
+    border:15px solid #ddd;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+.archive .woocommerce-pagination{
+    padding-bottom: 30px;
+}
+/*content sidebar in Taxonomy Archive*/
+.section .archive-sidebar{
+    background-color: #ddd;
+    border-top-right-radius: 20px;
+}
+.section .archive-sidebar .sideBarWrapper{
+    margin-top: 18px
+}
+.section .archive-sidebar .sidebarBox{
+    background-color: #eee;
+}
+.personen-sidebar {
+    margin: 0 auto;
+    max-width: 160px;
+}
+
+/*Netzwerk*/
+.network.type-network img.img-responsive{
+    -webkit-box-shadow: 7px 6px 5px 1px rgba(0,0,0,0.11);
+    -moz-box-shadow: 7px 6px 5px 1px rgba(0,0,0,0.11);
+    box-shadow: 7px 6px 5px 1px rgba(0,0,0,0.11);
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #eee;
+    border-right: 1px solid #eee;
+    border-radius:4px;
+}
+.network.type-network img.img-responsive:hover{
+    box-shadow: 3px 3px 3px 1px rgba(0,0,0,0.22);
+    border-top: 1px groove #ccc;
+}
 /* Ausgabe der Posts in archive Seiten*/
 .entry-taxonomy{
     letter-spacing: 1px;
@@ -1112,7 +1162,6 @@ section .homeNewsSection .row{
     border: 1px solid #ddd;
     display: inline-block;
 }
-
 
 /* Bootstrap Media Queries */
 @media (min-width: 576px) {  }
