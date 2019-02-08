@@ -445,7 +445,7 @@ add_action( 'wp_head', 'fwp_add_facet_labels', 100 );
 
 
 /**
- * Modifiziert den loop in der product-archive.php
+ * Modifiziert den WP Query loop in der product-archive.php entsprechend facetwp archive
  * keine personen und seiten anzeigen
  */
 
@@ -455,9 +455,6 @@ function modify_poduct_archive_query( $query ) {
 		$query->set('post_type',array(
 		        'post',
 		        'product',
-		        'project',
-		        'network',
-		        'termin',
 		        'publikation',
         ));
 	}
