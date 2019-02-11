@@ -22,18 +22,22 @@
 			<div class="sidebarBox">
 				<?php echo facetwp_display( 'facet', 'themen' );?>
 			</div>
-            <div class="sidebarBox">
-				<?php //echo facetwp_display( 'facet', 'categories' );?>
-            </div>
-			<?php if (is_shop() || 'all-results' == $fwp_tmpl ): ?>
+            <?php if (is_shop() || 'all-results' == $fwp_template_name ): ?>
 				<div class="sidebarBox">
 					<?php echo facetwp_display( 'facet', 'medientypen' );?>
 				</div>
+			<?php endif; ?>
+			<?php if ('all-results' == $fwp_template_name ): ?>
                 <div class="sidebarBox">
-                    <?php echo facetwp_display( 'facet', 'inhaltsbereiche' );?>
+					<?php echo facetwp_display( 'facet', 'inhaltsbereiche' );?>
+                </div>
+
+                <div class="sidebarBox">
+					<?php echo facetwp_display( 'facet', 'categories' );?>
                 </div>
 
 			<?php endif; ?>
+
 		</div>
 	</div>
 <?php
