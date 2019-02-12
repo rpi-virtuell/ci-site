@@ -369,6 +369,8 @@ function load_details_template(){
 
     if(file_exists($file)){
 	    include ($file) ;
+    }else{
+	    print_excerpt(15 );
     }
 }
 

@@ -7,6 +7,7 @@
  */
 
 ?>
+<?php print_excerpt(15 ); ?>
 <div class="network-details post-details">
 	<ul>
 		<li>

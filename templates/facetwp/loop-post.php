@@ -33,7 +33,6 @@
 
             <div class="entry-content">
 
-                <?php print_excerpt(15 ); ?>
                 <?php load_details_template() ?>
                 <p>
                     <?php echo get_the_term_list( $post->ID, 'section', '<span class="section-taxonomy entry-taxonomy">Arbeitsbereich: ', ', ', '</span><br>' ); ?>

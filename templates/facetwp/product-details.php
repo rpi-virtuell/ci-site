@@ -8,6 +8,7 @@
 
 $_product = wc_get_product( get_the_ID() );
 ?>
+<?php print_excerpt(15 ); ?>
 <div class="product-details post-details">
 	<ul>
         <li>
