@@ -9,7 +9,10 @@
 ?>
 <div class="publikation-details post-details">
 	<ul>
-		<li>
+        <li>
+            <?php echo types_render_field( 'autoren' );?>
+        </li>
+        <li>
 			Erscheinungsjahr: <?php echo types_render_field( 'year' );?>
 		</li>
 	</ul>

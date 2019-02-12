@@ -10,6 +10,9 @@ $_product = wc_get_product( get_the_ID() );
 ?>
 <div class="product-details post-details">
 	<ul>
+        <li>
+            <?php echo types_render_field( 'autoren' );?>
+        </li>
 		<li>
 			Preis: <?php echo $_product->get_price();?> Euro
 		</li>
