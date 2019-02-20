@@ -83,9 +83,9 @@ if ( woocommerce_product_loop() ) {
 
 
                 ?>
-                <h1 class="loop-title">
+                <h2 class="loop-title">
                     Aktuelle Veröffentlichungen <?php echo (is_tax( 'section' ))? 'aus dem Bereich' :'zum Thema';?> <?php woocommerce_page_title(); ?>
-                </h1>
+                </h2>
                 <?php
 
                 if ( wc_get_loop_prop( 'total' ) ) {

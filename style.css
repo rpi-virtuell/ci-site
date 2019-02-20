@@ -110,12 +110,15 @@ body {
     border-bottom-width: 2px;
     border-bottom-style: solid;
     border-bottom-color: #fff;
+
 }
 
 .tc-header {
     border-bottom-width: 2px;
     border-bottom-style: solid;
-    border-bottom-color: #C0502E;
+    border-bottom-color: transparent;
+    /*border-right: 1px solid   rgb(0, 61, 121);*/
+
     box-shadow: none;
 }
 
@@ -189,12 +192,13 @@ body {
     padding-bottom: .425em;
     overflow: hidden;
 }
-/*.primary-navbar__wrapper > .container{
-    background-image: url("images/farbbalken-h.png");
-    background-position: right bottom;
+.primary-navbar__wrapper{
+    background-image: url("images/farbbalken.svg");
+    background-position: right top;
     background-repeat: no-repeat;
-    background-size: 50px 10px;
-}*/
+    background-size: auto 80px;
+
+}
 .primary-nav__container {
     margin-top: 50px;
 }
@@ -249,6 +253,12 @@ body {
     border: none;
     padding: 0 3rem;
 }
+#customizr-slider-main_slider{
+   /* border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(236, 236, 236);*/
+    box-shadow: 0px 2px 2px rgba(102, 102, 102, 0.08);
+}
 
 /* Content */
 #main-wrapper {
@@ -259,7 +269,18 @@ body {
     background-position: right bottom;
 
 }
+/*header + #main-wrapper{
+    margin-bottom: 0;
+    padding-bottom: 3em;
+    background-image: url(images/hook-blue-bottom.png),url(images/Linienleiste.svg);
+    background-repeat: no-repeat;
+    background-position: right bottom, left top;
+}*/
+.page-breadcrumbs {
+    margin-top: 3em;
+    margin-bottom: 2em;
 
+}
 #content {
     padding-bottom: 0;
 }
@@ -278,6 +299,7 @@ body {
 }
 
 /* Sidebar */
+
 .widget-area aside {
     text-align: left;
     border-top: 2px solid #003D79;
@@ -307,23 +329,28 @@ body {
     padding: 1rem;
     border: 1px solid rgba(0, 0, 0, 0.075);
 
-
-    /*  -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-      -moz-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-      box-shadow: inset 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;*/
 }
 
 .sidebarBox ul {
-    padding-left: 1rem;
-    list-style-type: disc;
+    margin-left: 1rem;
+    list-style-type: none;
 }
-
+.sidebarBox li{
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+}
 .sidebarBox ul.sidebarSubnav{
     list-style-type: none;
     margin: 0 0 1em;
     line-height: 1;
     padding: 0;
 }
+.sidebarBox ul.wpv-loop {
+    list-style-type: none;
+    margin: 0 0 1rem 1rem;
+    line-height: 1;
+    padding: 0;
+   }
 .sidebarBox .sidebarSubnav li{
     padding: 0.25rem 0;
     line-height: 1.2;
@@ -333,7 +360,7 @@ body {
     text-decoration: none;
 }
 section[class^="post-"] .sideBarWrapper .row {
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     margin-top: 0;
 }
 
@@ -552,7 +579,10 @@ a:hover {
     margin: 0 0 1em;
     box-shadow: none;
 }
-
+.loop-title{
+    font-size: 1.9rem;
+    color: #2a3a8e;
+}
 /* Icon Classes */
 .author-red::before {
     content: '';
@@ -1103,29 +1133,40 @@ section .homeNewsSection .row{
 /* Taxonomie Archive  product-archive.php*/
 .term-description{
     padding:10px;
-    background-color: #eee;
+    background-color: #f2f2f2;
     margin-bottom: 40px;
-    border:15px solid #ddd;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border:1px solid #ddd;
+
+
 }
 .archive .woocommerce-pagination{
     padding-bottom: 30px;
 }
 /*content sidebar in Taxonomy Archive*/
 .section .archive-sidebar{
-    background-color: #ddd;
-    border-top-right-radius: 20px;
+  /*  background-color: #ddd;
+    border-top-right-radius: 20px;*/
 }
 .section .archive-sidebar .sideBarWrapper{
-    margin-top: 18px
+    margin-top: 0
 }
 .section .archive-sidebar .sidebarBox{
     background-color: #eee;
 }
 .personen-sidebar {
     margin: 0 auto;
-    max-width: 160px;
+    /*max-width: 160px;*/
+
+}
+.personen-sidebar > div{
+    display: flex;
+    flex-wrap: wrap;
+   justify-content: space-between;
+}
+.personen-sidebar > div > div{
+    width: 48%;
+    overflow: hidden;
+    margin-bottom: 1rem;
 }
 
 /*Netzwerk*/
@@ -1152,7 +1193,7 @@ section .homeNewsSection .row{
 }
 .results article , .article-container article{
     clear:both;
-    border-bottom: 1px solid #ddd;
+    /*border-bottom: 1px solid #ddd;*/
     margin-bottom: 30px;
     padding-bottom: 10px;
     min-height:160px;
@@ -1161,6 +1202,7 @@ section .homeNewsSection .row{
     padding:3px;
     border: 1px solid #ddd;
     display: inline-block;
+    box-shadow:4px 4px 5px #ddd;
 }
 
 /* Bootstrap Media Queries */

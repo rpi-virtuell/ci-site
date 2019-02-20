@@ -4,12 +4,14 @@
  */
   global $fwp_template_name;
 ?>
-	<div class="ddl-full-width-row row">
-		<div style="clear: both; width:100%">
+	<div class="row">
+		<div col-12>
 			<?php echo facetwp_display( 'facet', 'suche' );?>
 			<?php echo facetwp_display( 'counts' );?>
 			<?php echo facetwp_display( 'selections');?>
 		</div>
+    </div>
+    <div class="row">
 		<div class="col-sm-9 results">
 			<?php echo facetwp_display( 'pager' ); ?>
 			<?php echo facetwp_display( 'template', "$fwp_template_name" );?>
