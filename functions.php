@@ -474,4 +474,47 @@ function modify_poduct_archive_query( $query ) {
 }
 add_action( 'pre_get_posts', 'modify_poduct_archive_query' );
 
+/*
+* Removes loading of facetwp-stylesheet
+ * Styles coppied to theme-styles
+ *
+ * Todo: make it work
+ **/
 
+/*add_filter( 'facetwp_assets', 20 , function( $styles_array ){
+  $styles_array = [];
+
+    return $styles_array;
+});*/
+
+
+/***************************************************************************
+ * Anpassung für Internetexplorer
+ * eigenes style hinzufügen
+ */
+function ci_script_scripts_add_style() {
+    
+	global $is_IE;
+	if($is_IE ){
+		wp_enqueue_style('ie-main-style', czr_fn_get_theme_file_url( "ie-main-style.css") );	
+	}
+}
+add_action( 'wp_enqueue_scripts', 'ci_script_scripts_add_style', 9 );
+
+/**
+ * Anpassung für Internetexplorer
+ * orginal style.css von customizer deaktivieren
+ */
+
+function ci_remove_scripts_style() {
+    
+	global $is_IE;
+	if($is_IE ){
+		wp_deregister_style('customizr-main');
+		wp_add_inline_style( 'ie-main-style'      , apply_filters( 'czr_user_options_style' , '' ) );
+	}
+   
+}
+add_action( 'wp_enqueue_scripts', 'ci_remove_scripts_style', 11 );
+
+/***************************************************************************/

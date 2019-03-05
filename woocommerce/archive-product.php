@@ -31,12 +31,9 @@ do_action( 'woocommerce_before_main_content' );
 <header class="woocommerce-products-header">
 	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
 		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
-	<?php endif; ?>
-
-	<?php
-
-
+	<?php endif;
 	?>
+
 </header>
 <?php
 if ( woocommerce_product_loop() ) {
@@ -60,14 +57,11 @@ if ( woocommerce_product_loop() ) {
 	} else {
 
 
-
-
-
 		//woocommerce_product_loop_start();
 
 		?>
         <div class="ddl-full-width-row row">
-            <div class="col-lg-9 results">
+            <div class="col-md-8 results">
 
                 <?php
                 /**
@@ -83,9 +77,9 @@ if ( woocommerce_product_loop() ) {
 
 
                 ?>
-                <h1 class="loop-title">
+                <h2 class="loop-title">
                     Aktuelle Veröffentlichungen <?php echo (is_tax( 'section' ))? 'aus dem Bereich' :'zum Thema';?> <?php woocommerce_page_title(); ?>
-                </h1>
+                </h2>
                 <?php
 
                 if ( wc_get_loop_prop( 'total' ) ) {
@@ -114,7 +108,7 @@ if ( woocommerce_product_loop() ) {
 
                 ?>
             </div>
-            <div class="col-lg-3 archive-sidebar">
+            <div class="col-md-4 archive-sidebar">
                 <div class="sideBarWrapper">
                     <?php
 
