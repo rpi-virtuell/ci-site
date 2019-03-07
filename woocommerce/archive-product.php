@@ -114,7 +114,15 @@ if ( woocommerce_product_loop() ) {
 
                         if (is_tax( 'section' )){
                             print_parent_arbeitsbereich('h2');
-                            echo '<div class="sidebarBox">';
+/*
+	                        echo '<div class="sidebarBox">';
+	                        echo    '<h2>Dienstleistungen</h2>';
+	                        echo    '<div class="personen-sidebar">';
+	                        echo            types_render_termmeta(array('name'=>'dienstleistung'));
+	                        echo    '</div>';
+	                        echo '</div>';
+*/
+	                        echo '<div class="sidebarBox">';
                             echo    '<h2>Mitwirkende</h2>';
 	                        echo    '<div class="personen-sidebar">';
                             echo            render_view(array('name'=>'personen-in-arbeitsbereichen'));

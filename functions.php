@@ -94,6 +94,7 @@ function ci_admin_add_taxonomy_dropdown_filters()
         'event' => array('section', 'topic'),
         'project' => array('section', 'topic'),
         'post' => array('section', 'topic'),
+        'dienstleistung' => array('section'),
         'page' => array('section', 'topic')
     );
 
@@ -301,6 +302,9 @@ function get_content_type(){
 		case 'project':
 			$postType = 'Projekt';
 			break;
+		case 'dienstleistung':
+			$postType = 'Service';
+			break;
 		case 'person':
 			$postType = 'Mitarbeiter_in / Autor_in';
 			break;
@@ -325,6 +329,7 @@ function get_facetwp_pots_type_template_slug($archive = 'archive'){
 		case 'event':
 		case 'project':
 		case 'person':
+		case 'dienstleistung':
 		    return $slug;
 			break;
         default:
@@ -468,6 +473,7 @@ function modify_poduct_archive_query( $query ) {
 		        'post',
 		        'product',
 		        'publikation',
+		        'dienstleistung',
         ));
 	}
 
