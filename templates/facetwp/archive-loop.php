@@ -5,17 +5,17 @@
   global $fwp_template_name;
 ?>
 	<div class="row">
-		<div col-12>
+		<div class="col-sm-12">
 			<?php echo facetwp_display( 'facet', 'suche' );?>
-			<?php echo facetwp_display( 'counts' );?>
+			<?php // echo facetwp_display( 'counts' );?>
 			<?php echo facetwp_display( 'selections');?>
 		</div>
     </div>
     <div class="row">
 		<div class="col-sm-9 results">
-			<?php echo facetwp_display( 'pager' ); ?>
+		<div class="facetwp-pagerWrapper">	<?php echo facetwp_display( 'pager' ); ?></div>
 			<?php echo facetwp_display( 'template', "$fwp_template_name" );?>
-			<?php echo facetwp_display( 'pager' ); ?>
+        <div class="facetwp-pagerWrapper">	<?php echo facetwp_display( 'pager' ); ?></div>
 		</div>
 		<div class="col-sm-3 filter">
 			<div class="sidebarBox">
