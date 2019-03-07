@@ -114,14 +114,17 @@ if ( woocommerce_product_loop() ) {
 
                         if (is_tax( 'section' )){
                             print_parent_arbeitsbereich('h2');
-/*
+/**
+ * Ausgabe des Feldes Dienstleistungen in der Taxonomie Arbeitsbereiche
 	                        echo '<div class="sidebarBox">';
 	                        echo    '<h2>Dienstleistungen</h2>';
 	                        echo    '<div class="personen-sidebar">';
-	                        echo            types_render_termmeta(array('name'=>'dienstleistung'));
+	                        echo         get_term_meta(get_queried_object_id(),'wpcf-dienstleistungen', true);
 	                        echo    '</div>';
 	                        echo '</div>';
 */
+
+
 	                        echo '<div class="sidebarBox">';
                             echo    '<h2>Mitwirkende</h2>';
 	                        echo    '<div class="personen-sidebar">';
