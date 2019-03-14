@@ -253,16 +253,38 @@ function print_parent_arbeitsbereich($header= "h3"){
 		// Get the current section term id.
 		$query_obj = get_queried_object();
 		$term_id   = $query_obj->term_id;
-		if(get_ancestors($term_id, 'section', 'taxonomy')){
+		if($p=get_ancestors($term_id, 'section', 'taxonomy')){
+
+		    $parent_term_id= $p[0];
 
 			$term = get_term($term_id);
 
 			echo '<'.$header.'>Arbeitsbereich<br>';
 			echo get_term_parents_list( $term_id, 'section',array('inclusive'=>false,'separator'=>'<br>' ) );
 			echo '</'.$header.'>';
-			echo '<p><strong>Aufgabenbereich:</strong><br>'.
+/*			echo '<p><strong>Aufgabenbereich:</strong><br>'.
 			     $term->name;
                  '</p>';
+*/
+			$term_children = get_term_children( $parent_term_id, 'section' ) ;
+            if($term_children){
+	            echo '<h3>Aufgaben</h3>';
+                echo '<ul>';
+
+	            foreach ( $term_children as $child ) {
+		            $term_child = get_term_by( 'id', $child, 'section' );
+		            if($term_child == $term){
+			            echo '<li><strong>' . $term_child->name . '</strong></li>';
+		            }else{
+			            echo '<li><a href="' . get_term_link( $child, 'section' ) . '">' . $term_child->name . '</a></li>';
+		            }
+
+	            }
+	            echo '</ul>';
+            }
+
+
+
         }else{
 			echo '<'.$header.'>Aufgaben</'.$header.'>';
 			echo '<ul>';
@@ -472,8 +494,7 @@ function modify_poduct_archive_query( $query ) {
 		$query->set('post_type',array(
 		        'post',
 		        'product',
-		        'publikation',
-		        'dienstleistung',
+		        'publikation'
         ));
 	}
 
