@@ -545,3 +545,14 @@ function ci_remove_scripts_style() {
 add_action( 'wp_enqueue_scripts', 'ci_remove_scripts_style', 11 );
 
 /***************************************************************************/
+/**
+ * Load custom JS
+ */
+function wpb_adding_scripts() {
+
+    wp_register_script('customscript', get_stylesheet_directory_uri().'/custom.js', array('jquery'),'', true);
+
+    wp_enqueue_script('customscript');
+}
+
+add_action( 'wp_enqueue_scripts', 'wpb_adding_scripts' );
