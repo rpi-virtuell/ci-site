@@ -556,3 +556,25 @@ function wpb_adding_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'wpb_adding_scripts' );
+
+
+/**
+ * Beitragsbilder anzeiegn
+ *
+ * zuständige Hooks core/front/models/class_model_main_content.pfp Line 162 + 168
+ *
+ * add_filter( "czr_do_render_view_singular_thumbnail", array( "CZR_main_content_model_class", 'czr_fn_display_view_singular_thumbnail' ), 100, 2 );
+ *
+ *
+ * add_filter( 'czr_user_options_style'    , array( $this , 'czr_fn_write_thumbnail_inline_css') );
+ *
+ */
+add_action('wp_head', function(){
+
+	if(!is_page()){
+		add_filter( "czr_do_render_view_singular_thumbnail", '__return_false' );
+	}
+
+});
+
+

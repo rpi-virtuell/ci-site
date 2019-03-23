@@ -12,9 +12,19 @@
  * @since Customizr 1.0
  */
 ?>
-<?php get_header() ?>
+<?php get_header();
+$imgsrc = get_the_post_thumbnail_url();
+if (is_page() && $imgsrc):
 
-<?php
+    ?>
+        <div class="page-header-image header-image">
+            <div class="header-image-cover" style="background-image: url(<?php echo $imgsrc; ?>);">
+            </div>
+        </div>
+    <?php
+
+endif;
+
 // This hook is used to render the following elements(ordered by priorities) :
 // slider
 // singular thumbnail
