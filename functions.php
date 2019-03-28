@@ -7,7 +7,7 @@ function cd_add_editor_styles()
     add_editor_style('editor-style.css');
 }
 
-add_action('init', 'cd_add_editor_styles');
+// add_action('init', 'cd_add_editor_styles');
 /**
  * Apply theme's stylesheet to the visual editor.
  *
