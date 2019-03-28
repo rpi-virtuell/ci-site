@@ -556,3 +556,25 @@ function wpb_adding_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'wpb_adding_scripts' );
+
+
+/**
+ * Ausgabe von Beitragsbilder auf Einzelbeiträgen unterdrücken
+ *
+ * zuständiger Hookfilter im core/front/models/class_model_main_content.pfp Line 162
+ *
+ * add_filter( "czr_do_render_view_singular_thumbnail", array( "CZR_main_content_model_class", 'czr_fn_display_view_singular_thumbnail' ), 100, 2 );
+ *
+ * Der Filter gibt  ein bool zurück, ob eine Beitragsbild auf Einzepeiträgen agezeigt wird.
+ * Wird hier kategorisch auf flase gesetzt.
+ * Beitragsbilder müssen deshalb entweder über Toolet Inhaltsvorlage oder in php über get_the_post_thumbnail() ausgegben werden
+ */
+add_action('wp_head', function(){
+
+	if(!is_page()){
+		add_filter( "czr_do_render_view_singular_thumbnail", '__return_false' );
+	}
+
+});
+
+

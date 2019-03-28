@@ -19,13 +19,13 @@ defined( 'ABSPATH' ) || exit;
 
 get_header( 'shop' );
 /**
- * Headerbild aus dem entsprechenden Begriffsfeld der Taxonomie
+ * Headerbild: kommt aus dem entsprechenden Begriffsfeld der Taxonomie
  */
 $headerbild = get_term_meta(get_queried_object_id(),'wpcf-headerbild', true);
 if($headerbild):
     ?>
-        <div class="tax-header-image">
-            <div style="display:block;height: 40vh; min-height:150px; width:100%; overflow: hidden;background-repeat: no-repeat; background-size:cover;background-image: url(<?php echo $headerbild ?>);">
+        <div class="tax-header-image header-image">
+            <div class="header-image-cover" style="background-image: url(<?php echo $headerbild ?>);">
             </div>
         </div>
     <?php

@@ -1543,6 +1543,15 @@ article .entry-content {
     display: none;
 }
 
+/* Header Image flexible height */
+.header-image .header-image-cover{
+    height: 40vh;
+    min-height:150px;
+    width:100%; overflow: hidden;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
 /* Slider */
 
 .facetwp-slider-wrap {
