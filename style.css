@@ -152,6 +152,7 @@ header {
 /* Topnavigation */
 .primary-navbar__wrapper, .topbar-navbar__wrapper, .mobile-navbar__wrapper, .mobile-navbar__row, .mobile-nav__container, .mobile-nav__nav {
     background: none;
+    background-color: #fff;
 }
 
 .topbar-navbar__wrapper {
@@ -310,7 +311,6 @@ header {
 #content {
     padding-bottom: 0;
     position: relative;
-    overflow: hidden;
 }
 
 .mainContentWrapper {
@@ -1265,10 +1265,23 @@ section .homeNewsSection .row {
 }
 
 /*content sidebar in Taxonomy Archive*/
+.results.fade, #content header.fade{
+    opacity: 0.5;
+}
 .section .archive-sidebar {
-  /*  position: absolute;
-    right: -235px;
-    width: 250px;*/
+    position: absolute;
+    right: -280px;
+    top:-50px;
+    width: 300px;
+    -webkit-transition: right 300ms;
+    -moz-transition: right 300ms;
+    -ms-transition: right 300ms;
+    -o-transition: right 300ms;
+    transition: right 300ms;
+}
+
+.section .archive-sidebar.open {
+    right: 0;
 }
 
 .section .archive-sidebar .sideBarWrapper {
@@ -1303,7 +1316,7 @@ section .homeNewsSection .row {
     display: block;
     background-color: #C0502E;
     transform: rotate(90deg);
-    left: -55px;
+    left: -20px;
     top: 42px;
     font-weight: bold;
     color: #fff;
@@ -1544,12 +1557,14 @@ article .entry-content {
 }
 
 /* Header Image flexible height */
-.header-image .header-image-cover{
-    height: 40vh;
-    min-height:150px;
-    width:100%; overflow: hidden;
+.header-image .header-image-cover {
+    /*height:10vh;*/
+    min-height: 90px;
+    width: 100%;
+    overflow: hidden;
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: contain;
+    background-position: center center;
 }
 
 /* Slider */
@@ -1822,14 +1837,75 @@ input.facetwp-location {
 ************************ Bootstrap Media Queries *******************************
 */
 @media (min-width: 576px) {
+    .header-image .header-image-cover {
+        height: 15vh;
+        min-height: 109px;
+        background-size: cover;
+    }
+    #content{
+        overflow: hidden;
+    }
+    .section .archive-sidebar {
+        position: absolute;
+        right: -340px;
+        top:0px;
+        width: 350px;
+        -webkit-transition: right 300ms;
+        -moz-transition: right 300ms;
+        -ms-transition: right 300ms;
+        -o-transition: right 300ms;
+        transition: right 300ms;
+    }
 }
 
 @media (min-width: 768px) {
+    .header-image .header-image-cover {
+        height: 15vh;
+        min-height: 109px;
+
+    }
 
     /* Startseite */
     .startseitePubFlexWrapper > img {
-
         padding-right: 0.5rem;
+    }
+    /* Styling */
+    .term-description:after, .term-description:before {
+        left: 100%;
+        top: 32px;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    .term-description:after {
+        border-color: rgba(242, 242, 242, 0);
+        border-left-color: #f2f2f2;
+        border-width: 15px;
+        margin-top: -15px;
+    }
+
+    .term-description:before {
+        border-color: rgba(242, 242, 242, 0);
+        border-left-color: #ddd;
+        border-width: 16px;
+        margin-top: -16px;
+    }
+    /* Sidebar (margin)*/
+    /*content sidebar in Taxonomy Archive*/
+    .results.fade, #content header.fade{
+        opacity: 1;
+    }
+    .section .archive-sidebar {
+        position: static;
+        width: initial;
+    }
+
+    .sidebarswitch {
+        display: none;
     }
 
     /* WooCommerce Anpassungen */
@@ -1870,33 +1946,14 @@ input.facetwp-location {
 }
 
 @media (min-width: 992px) {
+    /* Header */
+    .header-image .header-image-cover {
+        height: 22vh;
+        min-height: 109px;
 
-    /* Styling */
-    .term-description:after, .term-description:before {
-        left: 100%;
-        top: 32px;
-        border: solid transparent;
-        content: " ";
-        height: 0;
-        width: 0;
-        position: absolute;
-        pointer-events: none;
     }
 
-    .term-description:after {
-        border-color: rgba(242, 242, 242, 0);
-        border-left-color: #f2f2f2;
-        border-width: 15px;
-        margin-top: -15px;
-    }
-
-    .term-description:before {
-        border-color: rgba(242, 242, 242, 0);
-        border-left-color: #ddd;
-        border-width: 16px;
-        margin-top: -16px;
-    }
-
+    /*Styling */
     .homeNewsSection .row > div, .termineListe > div {
         border-right: 1px solid #dae3ed;
         border-bottom: none;
@@ -1923,5 +1980,10 @@ input.facetwp-location {
 }
 
 @media (min-width: 1200px) {
+    .header-image .header-image-cover {
+        height: 25vh;
+        min-height: 109px;
+
+    }
 }
 

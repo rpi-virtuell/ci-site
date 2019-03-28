@@ -4,6 +4,13 @@ jQuery(function ($) {
 
     if ($('.archive-sidebar').length > 0) {
 $archiveSidebar = $('.archive-sidebar');
-$archiveSidebar.prepend('<div class="sidebarswitch">Informationen</div>');
+$contentColumn = $('.results');
+$contentHeader = $('header');
+$archiveSidebar.prepend('<div class="sidebarswitch">Info</div>');
+$archiveSidebar.on('click',function(e){
+    $(this).toggleClass('open');
+    $contentColumn.toggleClass('fade');
+    $contentHeader.toggleClass('fade');
+})
     }
 })
