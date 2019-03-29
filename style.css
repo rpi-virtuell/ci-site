@@ -365,8 +365,8 @@ header {
 }
 
 .sidebarBox li, .sidebarBox .wpv-loop li {
-    line-height: 1.2;
-    margin-bottom: 0.6rem;
+    line-height: 1.5;
+    margin-bottom: 0;
 }
 
 .sidebarBox ul.sidebarSubnav {
@@ -378,7 +378,7 @@ header {
 
 .sidebarBox ul.wpv-loop {
     list-style-type: none;
-    margin: 0 0 1rem 0;
+    margin: 0 ;
     line-height: 1;
     padding: 0;
 }
@@ -1265,13 +1265,14 @@ section .homeNewsSection .row {
 }
 
 /*content sidebar in Taxonomy Archive*/
-.results.fade, #content header.fade{
+.results.fade, #content header.fade {
     opacity: 0.5;
 }
+
 .section .archive-sidebar {
     position: absolute;
-    right: -280px;
-    top:-50px;
+    right: -284px;
+    top: -50px;
     width: 300px;
     -webkit-transition: right 300ms;
     -moz-transition: right 300ms;
@@ -1285,17 +1286,18 @@ section .homeNewsSection .row {
 }
 
 .section .archive-sidebar .sideBarWrapper {
-    margin-top: 0
+    margin-top: 0;
+    background-color: #ffffff;
 }
 
-.section .archive-sidebar .sidebarBox {
+.section .archive-sidebar .sidebarBox, .sideBarWrapper .sidebarBox {
     background-color: #eee;
 }
 
 .personen-sidebar {
     margin: 0 auto;
     /*max-width: 160px;*/
-
+    line-height: 1.2;
 }
 
 .personen-sidebar > div {
@@ -1309,6 +1311,14 @@ section .homeNewsSection .row {
     overflow: hidden;
     margin-bottom: 1rem;
 }
+.personen-sidebar img{
+    border: 1px solid transparent;
+    margin-bottom: 0.2rem;
+
+}
+.personen-sidebar img:hover,.personen-sidebar img:active, .personen-sidebar img:focus{
+    border: 1px solid #c0502e;
+}
 
 /* Sidebarswitch for small screens */
 .sidebarswitch {
@@ -1316,14 +1326,41 @@ section .homeNewsSection .row {
     display: block;
     background-color: #C0502E;
     transform: rotate(90deg);
-    left: -20px;
-    top: 42px;
+    left: -24px;
+    top: 13px;
+    height: 25px;
     font-weight: bold;
     color: #fff;
     padding: 0.2rem 0.5rem;
     cursor: pointer;
-}
 
+}
+.sidebarswitch:after{
+    transform: rotate(90deg);
+    display: inline-block;
+}
+.sidebarswitch:after{
+    content: ' >';
+}
+.open .sidebarswitch:after{
+    content: ' <';
+}
+.sidebarClose{
+    position: absolute;
+    right: 17px;
+    top: 2px;
+    font-size: 1.5rem;
+    line-height: 1;
+    font-weight: bold;
+    color: #c0502e;
+    cursor: pointer;
+    padding: 2px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
 /*Netzwerk*/
 .network.type-network img.img-responsive {
     -webkit-box-shadow: 7px 6px 5px 1px rgba(0, 0, 0, 0.11);
@@ -1842,19 +1879,26 @@ input.facetwp-location {
         min-height: 109px;
         background-size: cover;
     }
-    #content{
+
+    #content {
         overflow: hidden;
     }
+
     .section .archive-sidebar {
         position: absolute;
-        right: -340px;
-        top:0px;
-        width: 350px;
+        right: -385px;
+        top: 45px;
+        width: 400px;
         -webkit-transition: right 300ms;
         -moz-transition: right 300ms;
         -ms-transition: right 300ms;
         -o-transition: right 300ms;
         transition: right 300ms;
+
+    }
+
+    .sidebarswitch {
+        top: 14px;
     }
 }
 
@@ -1869,6 +1913,7 @@ input.facetwp-location {
     .startseitePubFlexWrapper > img {
         padding-right: 0.5rem;
     }
+
     /* Styling */
     .term-description:after, .term-description:before {
         left: 100%;
@@ -1894,11 +1939,13 @@ input.facetwp-location {
         border-width: 16px;
         margin-top: -16px;
     }
+
     /* Sidebar (margin)*/
     /*content sidebar in Taxonomy Archive*/
-    .results.fade, #content header.fade{
+    .results.fade, #content header.fade {
         opacity: 1;
     }
+
     .section .archive-sidebar {
         position: static;
         width: initial;
