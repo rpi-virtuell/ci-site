@@ -1274,6 +1274,7 @@ section .homeNewsSection .row {
     right: -284px;
     top: -50px;
     width: 300px;
+    max-width: 90%;
     -webkit-transition: right 300ms;
     -moz-transition: right 300ms;
     -ms-transition: right 300ms;
@@ -1774,7 +1775,14 @@ input.facetwp-location {
 }
 
 /* Selections shortcode */
-
+.facetwp-selections{
+    background-color: #ffe699;
+        margin-bottom: 1rem;
+}
+.facetwp-selections ul{
+    margin-bottom: 0;
+    padding: 2px 8px;
+}
 .facetwp-selections li {
     display: inline-block;
     line-height: 1;
@@ -1951,7 +1959,7 @@ input.facetwp-location {
         width: initial;
     }
 
-    .sidebarswitch {
+    .sidebarswitch, .sidebarClose {
         display: none;
     }
 
