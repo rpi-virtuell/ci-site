@@ -88,9 +88,12 @@ if ( woocommerce_product_loop() || true ) {
                 // woocommerce_results count
                 //do_action( 'woocommerce_before_shop_loop' );
 
-                echo render_view( array(
-	                'name' => 'dienstleistungen-grid'
-                ));
+                //Dienstleistungen in den Arbeitsbereichen anzeigen
+                if (is_tax( 'section' )) {
+			        echo render_view( array(
+				        'name' => 'dienstleistungen-grid'
+			        ) );
+		        }
 
                 if ( woocommerce_product_loop() ):
                     ?>
