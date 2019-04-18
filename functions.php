@@ -307,7 +307,7 @@ function get_content_type(){
 			$postType = get_the_term_list( get_the_ID(), 'medientyp','', ' · ','' );
 			break;
 		case 'network':
-			$postType = 'Netzwerk';
+			$postType = 'Website';
 			break;
 		case 'page':
 			$postType = '';

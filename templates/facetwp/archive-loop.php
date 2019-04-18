@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<?php echo facetwp_display( 'facet', 'suche' );?>
-			<?php // echo facetwp_display( 'counts' );?>
+			<?php echo facetwp_display( 'counts' );?>
 			<?php echo facetwp_display( 'selections');?>
 		</div>
     </div>
