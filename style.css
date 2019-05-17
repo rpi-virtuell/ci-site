@@ -145,9 +145,6 @@ body {
     transition: transform .35s ease-in-out, height .25s ease-in-out, background-color .45s ease-in-out;
 }
 
-header {
-
-}
 
 /* Topnavigation */
 .primary-navbar__wrapper, .topbar-navbar__wrapper, .mobile-navbar__wrapper, .mobile-navbar__row, .mobile-nav__container, .mobile-nav__nav {
@@ -174,7 +171,7 @@ header {
 }
 
 .topbar-nav__menu.nav__menu > .menu-item > a {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 }
 
 .primary-navbar__wrapper {
@@ -293,7 +290,9 @@ header {
     background-position: right bottom;
 
 }
-
+.publicationsWrapper{
+    flex-wrap: nowrap;
+}
 /*header + #main-wrapper{
     margin-bottom: 0;
     padding-bottom: 3em;
@@ -596,16 +595,26 @@ a:hover {
     margin-bottom: .3125em;
 
 }
-
-.tc-content-inner p, .tc-content-inner li {
+.tc-content-inner p {
     font-size: 0.9rem;
     line-height: 1.5;
+    margin-bottom: 0.5rem;
+}
+ .tc-content-inner li {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 0;
 }
 
 .czr-wp-the-content ul, .woocommerce-Tabs-panel.entry-content ul, .woocommerce-product-details__short-description ul {
     list-style: disc outside;
-}
 
+}
+.czr-wp-the-content ol, .woocommerce-Tabs-panel.entry-content ol,
+.woocommerce-product-details__short-description ol, .czr-wp-the-content ul, .woocommerce-Tabs-panel.entry-content ul,
+.woocommerce-product-details__short-description ul {
+    padding: 0 0 0 2rem;
+}
 .czr-wp-the-content .sidebarBox ul > li {
     padding: 0.25rem 0;
 }
@@ -1249,7 +1258,42 @@ section .homeNewsSection .row {
     flex-wrap: nowrap;
     margin-bottom: 1rem;
 }
+.woocommerce div.product p.price, .woocommerce div.product span.price {
+    color: #2a3a8e;
+    font-size: 1.25em;
+}
 
+.icn-shoppingcart::before {
+    display: inline-block;
+    background-image: url("icons/Entypo/blue/SVG/shopping-cart.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+    margin-right: .2em;
+    line-height: 1em;
+    margin-left: .2em;
+    content: '';
+}
+.icn-shoppingcart:hover::before {
+    background-image: url("icons/Entypo/red/SVG/shopping-cart.svg");
+}
+.woocommerce{
+    font-family: "Lato", sans-serif ;
+}
+.woocommerce table.shop_table:not([id^="wp-calendar"]):not(.ui-datepicker-calendar):not(.tribe-mini-calendar)  th,.woocommerce table.shop_table th{
+    font-family: "Lato", sans-serif ;
+    text-transform: unset ;
+    letter-spacing: unset ;
+    color: #c0502e;
+}
+.woocommerce .woocommerce-message, .woocommerce .woocommerce-error-list, .woocommerce .woocommerce-info{
+    font-family: "Lato", sans-serif ;
+    letter-spacing: unset;
+}
+.woocommerce-billing-fields__field-wrapper .form-row,.woocommerce-additional-fields .form-row{
+    display: block;
+}
 /* Taxonomie Archive  product-archive.php*/
 .term-description {
     padding: 10px;
@@ -1956,7 +2000,8 @@ input.facetwp-location {
 
     .section .archive-sidebar {
         position: static;
-        width: initial;
+        /*max-width: initial;*/
+        /*width: initial;*/
     }
 
     .sidebarswitch, .sidebarClose {

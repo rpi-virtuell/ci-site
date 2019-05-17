@@ -11,7 +11,7 @@
 			<?php echo facetwp_display( 'selections');?>
 		</div>
     </div>
-    <div class="row">
+    <div class="row publicationsWrapper">
 		<div class="col-sm-9 results">
 		<div class="facetwp-pagerWrapper">	<?php echo facetwp_display( 'pager' ); ?></div>
 			<?php echo facetwp_display( 'template', "$fwp_template_name" );?>

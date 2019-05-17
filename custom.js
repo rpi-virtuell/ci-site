@@ -10,7 +10,7 @@ jQuery(function ($) {
 
 
         if ($sidebar.hasClass('archive-sidebar-books')) {
-            console.log($('.archive-sidebar-books'));
+          //  console.log($('.archive-sidebar-books'));
             $('.sidebarswitch').text('Filter ');
         }
 
