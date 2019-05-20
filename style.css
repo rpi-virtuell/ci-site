@@ -403,6 +403,9 @@ body {
 .sidebarSubnav li a {
     text-decoration: none;
 }
+.sidebarBox .internalLinkWrapper a{
+     font-weight: bold;
+ }
 
 section[class^="post-"] .sideBarWrapper .row {
     margin-bottom: 0;
@@ -485,7 +488,7 @@ h2 {
 }
 
 h3 {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #c0502e;
 
 }
@@ -688,6 +691,7 @@ a:hover {
 .loop-title {
     font-size: 1.5rem;
     color: #c0502e;
+    margin-bottom: 1.5rem;
 }
 
 /* Icon Classes */
@@ -1166,9 +1170,25 @@ a:hover {
 /* Archiv-Overrides*/
 .themenTeaser {
     margin-bottom: 1rem;
+    border-bottom: 1px solid #dae3ed;
+}
+.themenTeaser h3{
+    font-size: 1.1rem;
 }
 
-/* TODO anpassen -> Startseite -> home */
+.themenTeaser p.datum{
+    font-size: 0.7rem;
+    text-align: right;
+}
+.themenTeaser p.thema{
+    font-size: 0.8rem;
+}
+span.label{
+    font-weight: bold;
+}
+.themenTeaser p.thema a{
+    text-decoration: underline dotted;
+}
 /* Startseite Anpassungen und Overrides für die Startseite */
 h2.startseite {
     width: 100%;
@@ -1228,8 +1248,13 @@ section .homeNewsSection .row {
 .startseitePubFlexWrapper > img {
     width: 30%;
     height: 30%;
-}
 
+}
+.startseitePubFlexWrapper a img{
+    padding: 3px;
+    border: 1px solid #ddd;
+    box-shadow: 4px 4px 5px #ddd;
+}
 .startseitePubFlexWrapper > p {
     width: 70%;
 }
@@ -1247,7 +1272,7 @@ section .homeNewsSection .row {
     background-image: url("icons/Entypo/red/SVG/calendar.svg");
 }
 
-/* WooCommerce Anpassungen */
+/* WooCommerce Shop-Anpassungen */
 .bookshopListWrapper {
     margin: 2rem 0;
 }
@@ -1307,7 +1332,10 @@ section .homeNewsSection .row {
 .archive .woocommerce-pagination {
     padding-bottom: 30px;
 }
-
+.productArchive p.datum{
+    font-size: 0.7rem;
+    text-align: right;
+}
 /*content sidebar in Taxonomy Archive*/
 .results.fade, #content header.fade {
     opacity: 0.5;
@@ -1932,6 +1960,7 @@ input.facetwp-location {
         background-size: cover;
     }
 
+
     #content {
         overflow: hidden;
     }
@@ -1962,6 +1991,7 @@ input.facetwp-location {
     }
 
     /* Startseite */
+
     .startseitePubFlexWrapper > img {
         padding-right: 0.5rem;
     }

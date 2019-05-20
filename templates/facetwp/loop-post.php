@@ -13,13 +13,13 @@
                 <?php print_post_image();?>
             </div>
         </div>
-        <div class="col-sm-9">
-            <div class="datum" ><?php print_entry_date(); ?></div>
+        <div class="col-sm-9 productArchive">
+            <p class="datum" ><?php print_entry_date(); ?></p>
             <header class="entry-header">
                 <div>
-                    <span class="content-type"><?php echo get_content_type(); ?></span>
+                  <?php /*  <span class="content-type"><?php echo get_content_type(); ?></span> */ ?>
                     <span>
-                        <?php echo get_the_term_list( $post->ID, 'thema', '<span class="thema-taxonomy entry-taxonomy"> &bull; Themenbereich: ', ', ', '</span>' ); ?>
+                        <?php echo get_the_term_list( $post->ID, 'thema', '<span class="thema-taxonomy entry-taxonomy label">  Themenbereich: ', ', ', '</span>' ); ?>
                     </span>
                 </div>
 
@@ -27,7 +27,7 @@
                     <span class="sticky-post">
                 <?php endif; ?>
                 <?php
-                    the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
+                    the_title( sprintf( '<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' );
                 ?>
             </header><!-- .entry-header -->
 
