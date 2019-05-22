@@ -25,5 +25,12 @@ jQuery(function ($) {
             $contentHeader.toggleClass('fade');
         })
     }
-
+/* Close maincontent container on person detail page when without content*/
+    if($('.person .mainContentWrapper').length >0 ){
+        $mainContentWrapper = $('.person .mainContentWrapper');
+        if($mainContentWrapper.text() === ""){
+            $mainContentWrapper.removeClass('col-sm-9');
+            $mainContentWrapper.next('div').removeClass('col-sm-3').addClass('col-sm-12');
+        }
+    }
 });

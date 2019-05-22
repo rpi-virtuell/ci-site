@@ -10,7 +10,10 @@
     <div class="ddl-full-width-row row ">
         <div class="col-sm-3">
             <div  class="posttumbnail">
+               <?php
+                echo '<a href="' . esc_url( get_permalink() ) . '">';?>
                 <?php print_post_image();?>
+          <?php echo '</a>'  ?>
             </div>
         </div>
         <div class="col-sm-9 productArchive">
