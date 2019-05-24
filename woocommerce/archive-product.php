@@ -157,9 +157,16 @@ if (woocommerce_product_loop() || true) {
                         echo get_query_all_tax_in_tax('thema', 'section');
                         echo '</div>';
 
-                        echo '<div class="sidebarBox networks">';
-                        echo render_view(array('name' => 'websites-in-arbeitsbereichen'));
-                        echo '</div>';
+                        if($websites = get_tax_websites()){
+	                        echo '<div class="sidebarBox networks">';
+	                        echo '<h2>Netzwerke und Kooperationen</h2>';
+	                        echo '<ul>';
+	                        echo $websites;
+	                        echo '</ul>';
+	                        echo '</div>';
+
+                        }
+
 
                     }
 
@@ -179,9 +186,16 @@ if (woocommerce_product_loop() || true) {
                         echo get_query_all_tax_in_tax('section', 'thema');
                         echo '</div>';
 
-                        echo '<div class="sidebarBox networks">';
-                        echo render_view(array('name' => 'websites-in-themenbereichen'));
-                        echo '</div>';
+	                    if($websites = get_tax_websites()){
+		                    echo '<div class="sidebarBox networks">';
+		                    echo '<h2>Netzwerke und Kooperationen</h2>';
+		                    echo $websites;
+		                    echo '</ul>';
+		                    echo '</div>';
+
+	                    }
+
+
                     }
 
 

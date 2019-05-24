@@ -248,6 +248,48 @@ function print_entry_date() {
 
 	);
 }
+function get_tax_websites($rowtag = "li") {
+
+	if ( is_tax( 'thema' ) ) {
+
+	    $tax = 'thema' ;
+
+	}elseif(is_tax('section') ){
+
+		$tax = 'section' ;
+
+    }else{
+		return '';
+    }
+
+	$query_obj = get_queried_object();
+    $term_id   = $query_obj->term_id;
+    $term = get_term($term_id);
+
+    $sites = get_posts( array(
+            'tax_query' => array(array(
+                'taxonomy' => $tax,
+                'field' => 'slug',
+                'terms' => $term
+            )),
+            'post_type'  => 'network',
+            'posts_per_page' => '-1',
+            'orderby' => 'post_title',
+            'order' => 'ASC'
+
+    ) );
+
+    $html = "";
+    foreach ($sites as $website){
+        $html .= '<'.$rowtag.'><a href="'.get_permalink($website) .'">'.$website->post_title.'</a></'.$rowtag.'>';
+    }
+
+    if(count ($sites)>0){
+        return $html;
+    }
+	return '';
+
+}
 function print_parent_themenbereich($header= "h3") {
 	if ( is_tax( 'thema' ) ) {
 		echo '<div class="sidebarBox">';
