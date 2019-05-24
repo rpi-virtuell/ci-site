@@ -208,6 +208,19 @@ function print_post_image( $dummy = "https://dummyimage.com/140x140/eeeeee/fffff
 	}
 	?><img   class="attachment-thumbnail size-thumbnail wp-post-image" src="<?php echo $imgsrc;?>" sizes="(max-width: 150px) 100vw, 150px" width="150"><?php
 
+
+}
+
+function has_post_image( ){
+
+	$imgsrc = get_the_post_thumbnail_url(get_the_ID(),'post-thumbnail');
+	if(!$imgsrc){
+	    return false;
+
+	}else{
+		return true;
+	}
+
 }
 
 function print_entry_date() {

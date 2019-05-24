@@ -8,6 +8,7 @@
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div class="ddl-full-width-row row ">
+		<?php if (has_post_image()): ?>
         <div class="col-sm-3">
             <div  class="posttumbnail">
                <?php
@@ -17,6 +18,9 @@
             </div>
         </div>
         <div class="col-sm-9 productArchive">
+		<?php else: ?>
+		<div class="col-sm-12 productArchive">
+		<?php endif; ?>
             <p class="datum" ><?php print_entry_date(); ?></p>
             <header class="entry-header">
                 <div>
