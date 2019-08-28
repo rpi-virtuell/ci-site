@@ -601,27 +601,27 @@ a:hover {
     margin-bottom: .3125em;
 
 }
-.tc-content-inner p {
+.tc-content-inner p, .productBody p {
     font-size: 0.9rem;
     line-height: 1.5;
     margin-bottom: 0.5rem;
 }
- .tc-content-inner li {
+ .tc-content-inner li, .productBody  li {
     font-size: 0.9rem;
     line-height: 1.5;
     margin-bottom: 0;
 }
 
-.czr-wp-the-content ul, .woocommerce-Tabs-panel.entry-content ul, .woocommerce-product-details__short-description ul {
+.czr-wp-the-content ul, .woocommerce-Tabs-panel.entry-content ul, .woocommerce-product-details__short-description ul, .productBody ul {
     list-style: disc outside;
 
 }
 .czr-wp-the-content ol, .woocommerce-Tabs-panel.entry-content ol,
 .woocommerce-product-details__short-description ol, .czr-wp-the-content ul, .woocommerce-Tabs-panel.entry-content ul,
-.woocommerce-product-details__short-description ul {
+.woocommerce-product-details__short-description ul, .productBody ul {
     padding: 0 0 0 2rem;
 }
-.czr-wp-the-content .sidebarBox ul > li {
+.czr-wp-the-content .sidebarBox ul > li  {
     padding: 0.25rem 0;
 }
 

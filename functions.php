@@ -443,9 +443,7 @@ function include_facetwp_article(){
 
 function load_details_template(){
 
-
-
-    $file =  get_stylesheet_directory( ) .
+	$file =  get_stylesheet_directory( ) .
              "/templates/facetwp/" . get_post_type( get_the_ID() ).'-details.php';
 
 
