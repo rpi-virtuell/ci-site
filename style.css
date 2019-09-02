@@ -481,17 +481,18 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-    font-size: 1.9rem;
+    font-size: 2rem;
     font-weight: 400;
 }
 
 h2 {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     color: #c0502e;
+    font-weight: 400;
 }
 
 h3 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #c0502e;
 
 }
@@ -509,7 +510,7 @@ h3.author::before {
     background-image: url("icons/Entypo/red/SVG/brush.svg");
 }
 
-h3.termine::before {
+h3.events::before {
     content: '';
     width: 1rem;
     height: 1rem;
@@ -542,7 +543,7 @@ a:hover {
     font-style: italic;
 }
 
-.datum, .small {
+.datum, .small, .tc-content-inner .datum, .tc-content-inner .small {
     color: #003D79;
     font-size: 0.8rem;
     margin-bottom: 0.4rem;
@@ -560,8 +561,11 @@ a:hover {
 #content h3 a {
     color: #c0502e;
     text-decoration: underline dotted;
+    font-weight: 400;
 }
-
+.homeNewsSection h3, .sectionStart h3{
+    font-size: 1.1rem;
+}
 #content a[href*="//"]:not([href*="singlesite.comenius.de"])::before {
     content: '';
     width: 1.2em;
@@ -603,7 +607,7 @@ a:hover {
 }
 .tc-content-inner p, .productBody p {
     font-size: 0.9rem;
-    line-height: 1.5;
+    line-height: 1.4;
     margin-bottom: 0.5rem;
 }
  .tc-content-inner li, .productBody  li {
@@ -692,7 +696,7 @@ a:hover {
 }
 
 .loop-title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: #c0502e;
     margin-bottom: 1.5rem;
 }
@@ -1193,11 +1197,11 @@ span.label{
     text-decoration: underline dotted;
 }
 /* Startseite Anpassungen und Overrides für die Startseite */
-h2.startseite {
+ h2.homePage {
     width: 100%;
 }
 
-h2.startseite::before {
+h2.homePage::before  {
     content: '';
     width: 25px;
     height: 25px;
@@ -1237,44 +1241,50 @@ section .homeNewsSection .row {
     margin-bottom: 0.75rem;
 }
 
-.startseite.newsSection::before {
+.homePage.newsSection::before {
     background-image: url("icons/Entypo/red/SVG/news.svg");
 }
 
-.startseitePubFlexWrapper {
+.homePagePubFlexWrapper {
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
     width: 100%;
 }
 
-.startseitePubFlexWrapper > img {
+.homePagePubFlexWrapper > img {
     width: 30%;
     height: 30%;
 
 }
-.startseitePubFlexWrapper a img{
+.homePagePubFlexWrapper a img{
     padding: 3px;
     border: 1px solid #ddd;
     box-shadow: 4px 4px 5px #ddd;
 }
-.startseitePubFlexWrapper > p {
+.homePagePubFlexWrapper > p {
     width: 70%;
 }
 
-.startseite.publications::before {
+.homePage.publications::before {
     background-image: url("icons/Entypo/red/SVG/open-book.svg");
 
 }
 
-.startseite.termine, .sidebarBox.termine {
+.homePage.events, .sidebarBox.termine {
     margin-bottom: 1rem;
 }
 
-.startseite.termine::before, .sidebarBox.termine {
+.homePage.events::before, .sidebarBox.termine {
     background-image: url("icons/Entypo/red/SVG/calendar.svg");
 }
-
+.sectionStart .event{
+     border-bottom: 1px solid #dae3ed;
+    margin-bottom: 1rem;
+ }
+.sectionStart .event:last-of-type{
+    border-bottom: none;
+}
 /* WooCommerce Shop-Anpassungen */
 .bookshopListWrapper {
     margin: 2rem 0;
@@ -1997,7 +2007,7 @@ input.facetwp-location {
 
     /* Startseite */
 
-    .startseitePubFlexWrapper > img {
+    .homePagePubFlexWrapper > img {
         padding-right: 0.5rem;
     }
 

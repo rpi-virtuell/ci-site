@@ -12,12 +12,12 @@
 		</div>
     </div>
     <div class="row publicationsWrapper">
-		<div class="col-sm-9 results">
+		<div class="col-sm-8 results">
 		<div class="facetwp-pagerWrapper">	<?php echo facetwp_display( 'pager' ); ?></div>
 			<?php echo facetwp_display( 'template', "$fwp_template_name" );?>
         <div class="facetwp-pagerWrapper">	<?php echo facetwp_display( 'pager' ); ?></div>
 		</div>
-		<div class="col-sm-3 filter sideBarWrapper archive-sidebar archive-sidebar-books">
+		<div class="col-sm-4 filter sideBarWrapper archive-sidebar archive-sidebar-books">
 			<div class="sidebarBox">
 				<?php echo facetwp_display( 'facet', 'arbeitsbereiche' );?>
 			</div>
