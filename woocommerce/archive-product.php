@@ -97,8 +97,7 @@ if (woocommerce_product_loop() || true) {
                 if (woocommerce_product_loop()):
                     ?>
                     <h2 class="loop-title">
-                        Aktuelle
-                        Veröffentlichungen <?php echo (is_tax('section')) ? 'aus dem Bereich' : 'zum Thema'; ?> <?php woocommerce_page_title(); ?>
+                        Veröffentlichungen <?php echo (is_tax('section')) ? 'aus dem Bereich' : 'zum Thema'; ?> &raquo;<?php woocommerce_page_title(); ?>&laquo;
                     </h2>
                     <?php
 
@@ -189,6 +188,7 @@ if (woocommerce_product_loop() || true) {
 	                    if($websites = get_tax_websites()){
 		                    echo '<div class="sidebarBox networks">';
 		                    echo '<h2>Netzwerke und Kooperationen</h2>';
+                            echo '<ul>';
 		                    echo $websites;
 		                    echo '</ul>';
 		                    echo '</div>';

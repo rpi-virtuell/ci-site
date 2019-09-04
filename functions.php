@@ -298,7 +298,7 @@ function print_parent_themenbereich($header= "h3") {
 		$term_id   = $query_obj->term_id;
 		$term = get_term($term_id);
 		echo '<'.$header.'>Themenbereich</'.$header.'>';
-		echo '<p>'.$term->name.'</p>';
+		echo '<p class="currentSubject">'.$term->name.'</p>';
 		echo '</div>';
 	}
 }
