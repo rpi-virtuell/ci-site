@@ -25,9 +25,9 @@
             <header class="entry-header">
                 <div>
                   <?php /*  <span class="content-type"><?php echo get_content_type(); ?></span> */ ?>
-                    <span>
-                        <?php echo get_the_term_list( $post->ID, 'thema', '<span class="thema-taxonomy entry-taxonomy label">  Themenbereich: ', ', ', '</span>' ); ?>
-                    </span>
+                    <p class="metaData">
+                        <?php echo get_the_term_list( $post->ID, 'thema', '<span class="thema-taxonomy entry-taxonomy ">  <span class="label">Themenbereich:</span> ', ', ', '</span>' ); ?>
+                    </p>
                 </div>
 
                 <?php if ( is_sticky() && is_home() && ! is_paged() ) : ?>
@@ -41,10 +41,10 @@
             <div class="entry-content">
 
                 <?php load_details_template() ?>
-                <p>
-                    <?php echo get_the_term_list( $post->ID, 'section', '<span class="section-taxonomy entry-taxonomy">Arbeitsbereich: ', ', ', '</span><br>' ); ?>
-                    <?php echo get_the_term_list( $post->ID, 'category', '<span class="thema-taxonomy entry-taxonomy">Kategorien: ', ', ', '</span><br>' ); ?>
-                    <?php echo get_the_term_list( $post->ID, 'medientyp', '<span class="medientyp-taxonomy entry-taxonomy">Medientyp: ', ', ', '</span><br>' ); ?>
+                <p class="metaData metaDataBottom">
+                    <?php echo get_the_term_list( $post->ID, 'section', '<span class="section-taxonomy entry-taxonomy "><span class="label">Arbeitsbereich:</span> ', ', ', '</span><br>' ); ?>
+                    <?php echo get_the_term_list( $post->ID, 'category', '<span class="thema-taxonomy entry-taxonomy"><span class="label">Kategorien:</span> ', ', ', '</span><br>' ); ?>
+                    <?php echo get_the_term_list( $post->ID, 'medientyp', '<span class="medientyp-taxonomy entry-taxonomy"><span class="label">Medientyp:</span> ', ', ', '</span><br>' ); ?>
                 </p>
 
             </div><!-- .entry-content -->

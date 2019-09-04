@@ -47,7 +47,7 @@ Version:        1.0.0
     font-style: normal;
     font-weight: 600;
     src: url('fonts/Lato/LatoLatin-Semibold.eot'); /* IE9 Compat Modes */
-    src: local('Lato Bold'), local('Lato-Bold'),
+    src: local('Lato Semibold'), local('Lato-Semibold'),
     url('fonts/Lato/LatoLatin-Semibold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('fonts/Lato/LatoLatin-Semibold.woff2') format('woff2'), /* Super Modern Browsers */ url('fonts/Lato/LatoLatin-Semibold.woff') format('woff'), /* Modern Browsers */ url('fonts/Lato/LatoLatin-Semibold.ttf') format('truetype');
 }
 
@@ -303,7 +303,13 @@ Content *********************************************
     padding-top: 1.5rem;
 
 }
-
+.contentListBoxWrapper {
+    padding: 0.6rem;
+    height: 100%;
+}
+.staffMemberBox p{
+    font-size: 0.9rem;
+}
 /*
 Sidebar *********************************************
 */
@@ -335,7 +341,7 @@ Sidebar *********************************************
 
 .sidebarBox {
     margin-bottom: 1rem;
-    padding: 1rem;
+    padding: 1rem 1rem 0.5rem;
     border: 1px solid rgba(0, 0, 0, 0.075);
 }
 
@@ -388,6 +394,7 @@ Sidebar *********************************************
 
 .sidebarBox h3 {
     font-size: 1rem;
+    margin-bottom: 0;
 }
 
 .sidebarSubnav li a {
@@ -397,7 +404,9 @@ Sidebar *********************************************
 .sidebarBox .internalLinkWrapper a {
     font-weight: bold;
 }
-
+.sideBarWrapper .sidebarBox p{
+    font-size: 0.9rem;
+}
 .sidebarBox p.currentSubject{
     color: #003d79;
 }
@@ -456,11 +465,6 @@ section[class^="post-"] .sideBarWrapper .row {
     padding-top: 0;
     padding-bottom: 0;
     font-size: 1.2em;
-}
-
-.contentListBoxWrapper {
-    padding: 0.6rem;
-    height: 100%;
 }
 
 /**
@@ -1056,32 +1060,6 @@ Icon Classes ************************************************
     background-image: url("icons/Entypo/red/SVG/documents.svg");
 }
 
-.open-access::before {
-    content: '';
-    width: 1em;
-    height: 1em;
-    display: inline-block;
-    margin-right: 0.3rem;
-    -webkit-background-size: contain;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    background-image: url("icons/Entypo/blue/SVG/documents.svg");
-}
-
-.open-access-red::before {
-    content: '';
-    width: 1rem;
-    height: 1rem;
-    display: inline-block;
-    margin-right: 0.3rem;
-    -webkit-background-size: contain;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    background-image: url("icons/Entypo/red/SVG/documents.svg");
-}
-
 .cd::before {
     content: '';
     width: 1em;
@@ -1208,7 +1186,7 @@ Archive-Overrides ********************************************
 }
 
 span.label {
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .themenTeaser p.thema a {
@@ -1528,12 +1506,23 @@ article .entry-content {
     line-height: 1.5rem;
     color: rgb(68, 68, 68);
 }
+.metaData{
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
 
+.metaDataBottom{
+    margin-top: 1rem;
+}
 .entry-taxonomy {
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     color: #003D79;
-    font-size: 0.8rem;
-    margin-bottom: 0.4rem;
+    font-size: 0.7rem;
+   /* margin-bottom: 0.4rem;*/
+}
+
+.entry-taxonomy .label{
+    font-size: 0.75rem;
 }
 
 .results article, .article-container article {
