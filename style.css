@@ -455,7 +455,9 @@ section[class^="post-"] .sideBarWrapper .row {
     background-position: 0 0;
     background-size: contain;
 }
-
+.footerDepartmentColumn .alignleft{
+    margin-top: -5px;
+}
 .widget__container > .row > div {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -1257,7 +1259,7 @@ section .homeNewsSection .row {
 
 }
 
-.homePagePubFlexWrapper a img {
+.homePagePubFlexWrapper a img , .homeNewsSection a img{
     padding: 3px;
     border: 1px solid #ddd;
     box-shadow: 4px 4px 5px #ddd;
@@ -1448,7 +1450,9 @@ Sidebarswitch for small screens ******************************************
     cursor: pointer;
 
 }
-
+.sideBarWrapper.archive-sidebar .sidebarswitch{
+    left: -41px;
+}
 .sidebarswitch:after {
     transform: rotate(90deg);
     display: inline-block;
