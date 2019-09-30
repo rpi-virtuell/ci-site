@@ -181,7 +181,7 @@ if (woocommerce_product_loop() || true) {
 
 
                         echo '<div class="sidebarBox">';
-                        echo '<h2>Verbundene Bereiche und Aufgaben</h2>';
+                        echo '<h2>Verbundene Arbeits-  und Aufgabenbereiche</h2>';
                         echo get_query_all_tax_in_tax('section', 'thema');
                         echo '</div>';
 
