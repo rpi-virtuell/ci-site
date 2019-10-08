@@ -88,7 +88,12 @@ if (woocommerce_product_loop() || true) {
                 //do_action( 'woocommerce_before_shop_loop' );
 
                 //Dienstleistungen in den Arbeitsbereichen anzeigen
-                if (is_tax('section')) {
+                if(
+                        is_tax('section', 'bibliothek') ||
+                        is_tax('section', 'verbandsarbeit') ||
+                        is_tax('section', 'sachbearbeitung') ||
+                        is_tax('section', 'bibliothecaplus-hotline')
+                ){
                     echo render_view(array(
                         'name' => 'dienstleistungen-grid'
                     ));
@@ -132,6 +137,9 @@ if (woocommerce_product_loop() || true) {
                     <?php
 
                     if (is_tax('section')) {
+
+
+
                         print_parent_arbeitsbereich('h2');
                         /**
                          * Ausgabe des Feldes Dienstleistungen in der Taxonomie Arbeitsbereiche
@@ -145,9 +153,16 @@ if (woocommerce_product_loop() || true) {
 
 
                         echo '<div class="sidebarBox">';
-                        echo '<h2>Mitwirkende</h2>';
-                        echo '<div class="personen-sidebar">';
-                        echo render_view(array('name' => 'personen-in-arbeitsbereichen'));
+                        if(is_tax('section', 'service')){
+	                        echo '<h2>Zuständig</h2>';
+	                        echo '<div class="personen-sidebar">';
+	                        echo render_view(array('name' => 'personen-in-service'));
+	                    }else{
+	                        echo '<h2>Mitwirkende</h2>';
+	                        echo '<div class="personen-sidebar">';
+	                        echo render_view(array('name' => 'personen-in-arbeitsbereichen'));
+                        }
+
                         echo '</div>';
                         echo '</div>';
 

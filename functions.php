@@ -542,7 +542,7 @@ add_action( 'wp_head', 'fwp_add_facet_labels', 100 );
  */
 
 function modify_poduct_archive_query( $query ) {
-	if ( $query->is_tax() && $query->is_main_query() ) {
+	if ( $query->is_tax() && $query->is_main_query() && !is_admin()) {
 
 		$query->set('post_type',array(
 		        'post',
