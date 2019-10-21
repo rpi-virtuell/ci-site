@@ -1443,7 +1443,7 @@ Sidebarswitch for small screens ******************************************
     transform: rotate(90deg);
     left: -24px;
     top: 13px;
-    height: 25px;
+    height: 29px;
     font-weight: bold;
     color: #fff;
     padding: 0.2rem 0.5rem;
@@ -1549,8 +1549,8 @@ article .entry-content {
 * FACTE-WP Overrides ***********************************************************
 */
 
-.facetwp-facet {
-    margin-bottom: 40px;
+.facet-wrap .facetwp-facet {
+    margin-bottom: 1rem;
 }
 
 .facetwp-pager-label {
@@ -1626,7 +1626,9 @@ article .entry-content {
 }
 
 /* Checkboxes */
-
+.facetwp-type-checkboxes{
+    font-size: 0.9rem;
+}
 .facetwp-type-checkboxes .facetwp-depth {
     display: none;
 }
@@ -1777,7 +1779,7 @@ article .entry-content {
 
 .facetwp-search {
     padding-right: 28px;
-    width: 30%;
+    width:85%;
 }
 
 .facetwp-btn {
@@ -1939,7 +1941,7 @@ input.facetwp-location {
     background-position: right center;
 }
 
-. .datum {
+.datum {
     display: flex;
     justify-content: flex-end;
 }

@@ -10,7 +10,7 @@ jQuery(function ($) {
 
 
         if ($sidebar.hasClass('archive-sidebar-books')) {
-          //  console.log($('.archive-sidebar-books'));
+            //  console.log($('.archive-sidebar-books'));
             $('.sidebarswitch').text('Filter ');
         }
 
@@ -25,12 +25,15 @@ jQuery(function ($) {
             $contentHeader.toggleClass('fade');
         })
     }
-/* Close maincontent container on person detail page when without content*/
-    if($('.person .mainContentWrapper').length >0 ){
-        $mainContentWrapper = $('.person .mainContentWrapper');
-        if($mainContentWrapper.text() === ""){
-            $mainContentWrapper.removeClass('col-sm-9');
-            $mainContentWrapper.next('div').removeClass('col-sm-3').addClass('col-sm-12');
+    /* Close maincontent container on person detail page when without content*/
+    if ($('.person .mainContentWrapper').length > 0) {
+        $mainContentWrapper = $('.person .mainContentWrapper .row .col-sm-12 ');
+         $profile = $('.sidebarBox .profile');
+        $personFunction = $('.sidebarBox .profile .sidebarFunctionWrapper');
+
+        if (!$mainContentWrapper.text().trim().length) {
+            $mainContentWrapper.empty();
+            $mainContentWrapper.prepend($profile);
         }
     }
 });
