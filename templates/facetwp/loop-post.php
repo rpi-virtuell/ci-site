@@ -6,7 +6,8 @@
  * Time: 13:02
  */
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<div class="themenTeaser">
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> >
     <div class="ddl-full-width-row row ">
 		<?php if (has_post_image()): ?>
         <div class="col-sm-3">
@@ -52,4 +53,5 @@
 
         </div>
     </div>
-</article><!-- #post-## -->
+</article>
+</div><!-- #post-## -->
