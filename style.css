@@ -1627,7 +1627,7 @@ article .entry-content {
 
 /* Checkboxes */
 .facetwp-type-checkboxes{
-    font-size: 0.9rem;
+    font-size: 0.813rem;
 }
 .facetwp-type-checkboxes .facetwp-depth {
     display: none;
@@ -1643,6 +1643,9 @@ article .entry-content {
     margin-bottom: 4px;
     padding-left: 20px;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+
 }
 
 .facetwp-checkbox.checked {
@@ -1656,7 +1659,7 @@ article .entry-content {
 }
 
 .facetwp-checkbox .facetwp-expand {
-    float: right;
+    float: none;
 }
 
 /* Radio */
