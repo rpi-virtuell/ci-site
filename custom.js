@@ -36,4 +36,12 @@ jQuery(function ($) {
             $mainContentWrapper.prepend($profile);
         }
     }
+    /* Scroll to top on FacetWP Ajax Refresh*/
+    $(document).on('facetwp-loaded', function() {
+        if (FWP.loaded) {
+            $('html, body').animate({
+                scrollTop: $('.facetwp-template').offset().top
+            }, 500);
+        }
+    });
 });
