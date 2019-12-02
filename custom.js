@@ -30,10 +30,11 @@ jQuery(function ($) {
         $mainContentWrapper = $('.person .mainContentWrapper .row .col-sm-12 ');
          $profile = $('.sidebarBox .profile');
         $personFunction = $('.sidebarBox .profile .sidebarFunctionWrapper');
+        $personbody = $('#person-body');
 
         if (!$mainContentWrapper.text().trim().length) {
             $mainContentWrapper.empty();
-            $mainContentWrapper.prepend($profile);
+            $personbody.prepend($profile);
         }
     }
     /* Scroll to top on FacetWP Ajax Refresh*/
