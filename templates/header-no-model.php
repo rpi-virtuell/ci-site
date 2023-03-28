@@ -22,7 +22,7 @@
   <body <?php body_class(); ?>>
     <?php
         if ( czr_fn_is_registered_or_possible('sidenav') && czr_fn_is_registered_or_possible('header') ) {
-          czr_fn_render_template( 'header/parts/sidenav' );
+		   czr_fn_render_template( 'header/parts/sidenav' );
         }
     ?>
 

@@ -617,7 +617,7 @@ Overrides for Toolset and Customizr Classes*******************************
 .tc-content-inner p, .productBody p {
     font-size: 1rem;
     line-height: 1.5;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .tc-content-inner li, .productBody li {
@@ -1515,6 +1515,11 @@ article .entry-content {
     margin-bottom: 1rem;
 }
 
+.metaData .leadership{
+	font-weight: bold;
+	margin-bottom: 0rem;
+}
+
 .metaDataBottom{
     margin-top: 1rem;
 }
@@ -2181,9 +2186,21 @@ input.facetwp-location {
 
 @media screen and (min-width: 1200px) {
     .header-image .header-image-cover {
-        height: 25vh;
+        height: 28vh;
         min-height: 109px;
 
     }
+}
+
+/* Checkbox für  */
+.woocommerce form .form-row .input-checkbox {
+
+    display: inline-block;
+    margin: -2px 0 0;
+    height: 20px;
+    width: 20px;
+    background: #fff;
+    border: 1px solid darkblue;
+
 }
 

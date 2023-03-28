@@ -45,4 +45,25 @@ jQuery(function ($) {
             }, 500);
         }
     });
+	
+	$(document).ready(function(){
+		
+		var openlinks = $('.single-event a[href *= "/wp-content/uploads/"], .single-post a[href *= "/wp-content/uploads/"], .single-product a[href *= "/wp-content/uploads/"],.single-publikation a[href *= "/wp-content/uploads/"]' );
+		
+		if(openlinks.length > 0 && openlinks.length < 10){
+			
+			$('.single .sideBarWrapper ').first().append($('<div class="sidebarBox downloads"><h3><i class="fas fa-file-download"></i> Downloads</h3><ul></ul></div>'));
+			
+			$.each(openlinks, function(key,value){
+			
+				console.log('openlinks', value.href);
+				console.log('openlinks', value.text);
+				
+				var button = $('<li><a class="openaccess" style="max-width:150px" href="'+value.href+'" title="'+value.textContent+'">'+value.textContent+'</a></li>');
+				
+				$('.single .sideBarWrapper .sidebarBox.downloads ul').first().append(button);
+			});
+		}
+		
+	});
 });

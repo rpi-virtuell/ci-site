@@ -166,11 +166,14 @@ if (woocommerce_product_loop() || true) {
                         echo '</div>';
                         echo '</div>';
 
-                        echo '<div class="sidebarBox">';
-                        echo '<h2>Verbundene Themenbereiche</h2>';
-                        echo get_query_all_tax_in_tax('thema', 'section');
-                        echo '</div>';
-
+						if($liste = get_query_all_tax_in_tax('thema', 'section')){
+							echo '<div class="sidebarBox">';
+							echo '<h2>Verbundene Themenbereiche</h2>';
+							echo $liste;
+							echo '</div>';
+	
+						}
+                        
                         if($websites = get_tax_websites()){
 	                        echo '<div class="sidebarBox networks">';
 	                        echo '<h2>Netzwerke und Kooperationen</h2>';
@@ -188,18 +191,18 @@ if (woocommerce_product_loop() || true) {
 
                         print_parent_themenbereich('h2');
                         echo '<div class="sidebarBox">';
-                        echo '<h2>Mitwirkende</h2>';
+                        echo '<h2>Ansprechpartner*innen</h2>';
                         echo '<div class="personen-sidebar">';
                         echo render_view(array('name' => 'personen-in-themenbereichen'));
                         echo '</div>';
                         echo '</div>';
 
-
-                        echo '<div class="sidebarBox">';
-                        echo '<h2>Verbundene Arbeits-  und Aufgabenbereiche</h2>';
-                        echo get_query_all_tax_in_tax('section', 'thema');
-                        echo '</div>';
-
+						if($liste = get_query_all_tax_in_tax('section', 'thema')){
+							echo '<div class="sidebarBox">';
+							echo '<h2>Verbundene Arbeits-  und Aufgabenbereiche</h2>';
+							echo $liste;
+							echo '</div>';
+						}
 	                    if($websites = get_tax_websites()){
 		                    echo '<div class="sidebarBox networks">';
 		                    echo '<h2>Netzwerke und Kooperationen</h2>';

@@ -95,6 +95,7 @@ do_action('__before_main_wrapper')
 						if( function_exists('facetwp_display') && is_page() && $slug =='publikationen' ){
 
 							the_archive_loop('all-publications');
+							
 						}elseif( function_exists('facetwp_display') && is_page() ){
 							the_archive_loop('all-results');
 						} else {

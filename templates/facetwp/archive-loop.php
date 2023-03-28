@@ -2,6 +2,7 @@
 /**
  * facetwp injection
  */
+ 
   global $fwp_template_name;
 ?>
 	<div class="row">

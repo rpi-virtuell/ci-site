@@ -5,7 +5,7 @@
  * Date: 03.02.2019
  * Time: 13:02
  */
-?>
+ ?>
 <div class="themenTeaser">
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> >
     <div class="ddl-full-width-row row ">
@@ -27,7 +27,7 @@
                 <div>
                   <?php /*  <span class="content-type"><?php echo get_content_type(); ?></span> */ ?>
                     <p class="metaData">
-                        <?php echo get_the_term_list( $post->ID, 'thema', '<span class="thema-taxonomy entry-taxonomy ">  <span class="label">Themenbereich:</span> ', ', ', '</span>' ); ?>
+                        <?php echo get_the_term_list( $post->ID, 'thema', '<span class="thema-taxonomy entry-taxonomy ">  <span class="label"></span> ', ', ', '</span>' ); ?>
                     </p>
                 </div>
 

@@ -26,7 +26,7 @@ add_action('wp', 'remove_image_zoom_support', 100);
 // no functionality by this action hook
 
 remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
-remove_action('woocommerce_before_subcategory_title', woocommerce_subcategory_thumbnail, 10);
+remove_action('woocommerce_before_subcategory_title', 'woocommerce_subcategory_thumbnail', 10);
 
 /*function mytheme_add_woocommerce_support()
 {
@@ -273,6 +273,9 @@ function get_tax_websites($rowtag = "li") {
                 'terms' => $term
             )),
             'post_type'  => 'network',
+			"post_status" => [
+				"publish"
+			],
             'posts_per_page' => '-1',
             'orderby' => 'post_title',
             'order' => 'ASC'
@@ -391,8 +394,13 @@ function get_content_type(){
 
 function get_facetwp_pots_type_template_slug($archive = 'archive'){
 
+
     $type = get_queried_object();
-	$slug = str_replace('/','',$type->rewrite['slug'] );
+	if(is_a($type, 'WP_Post')){
+		$slug = $type->post_name;
+	}else{
+		return $archive ;
+	}
 	
 	if(is_shop()){
 		return 'product';
@@ -430,6 +438,7 @@ function load_templatepart($file, $template_name = false){
 function the_archive_loop( $default = 'archive'){
 
 	$template_name = get_facetwp_pots_type_template_slug($default);
+	
 
 	load_templatepart('facetwp/archive-loop.php', $template_name);
 
@@ -456,6 +465,11 @@ function load_details_template(){
 
 
 
+function ci_post_query( $q ){ 
+	//var_dump($query);die();
+}
+add_action( 'woocommerce_product_query', 'ci_post_query' ); 
+
 function get_query_all_tax_in_tax($resulttax = 'thema', $filtertax='section'){
 
 	$terms = get_terms( array(
@@ -470,7 +484,18 @@ function get_query_all_tax_in_tax($resulttax = 'thema', $filtertax='section'){
 
 	$args = array(
 	    'posts_per_page' => 100000,
-        'post_type' =>'any',
+        'post_type' =>[
+			"publikation",
+			"event",
+			"network",
+			"project",
+			"post",
+			"page",
+			"product"
+		],
+		"post_status" => [
+			"publish"
+		],
 		'tax_query' => array(
 			array(
 				'relation' => 'AND',
@@ -499,6 +524,11 @@ function get_query_all_tax_in_tax($resulttax = 'thema', $filtertax='section'){
 		wp_reset_postdata();
 	}
 	$tax_ids = array_unique($tax_ids);
+	
+	if(count($tax_ids)<1){
+		return false;
+	}
+	
 	sort($tax_ids);
 
     $list_elements = '';
@@ -578,6 +608,9 @@ function ci_script_scripts_add_style() {
 	if($is_IE ){
 		wp_enqueue_style('ie-main-style', czr_fn_get_theme_file_url( "ie-main-style.css") );	
 	}
+	wp_enqueue_style('theme-style', czr_fn_get_theme_file_url( "editor-style.css") );
+	wp_enqueue_style('theme-style', czr_fn_get_theme_file_url( "bootstrap.css") );
+	
 }
 add_action( 'wp_enqueue_scripts', 'ci_script_scripts_add_style', 9 );
 
@@ -630,4 +663,18 @@ add_action('wp_head', function(){
 
 });
 
+// disable Googlefont heavy Hack
 
+function start_wp_head_buffer() {
+    ob_start();
+}
+add_action('wp_head','start_wp_head_buffer',0);
+
+function end_wp_head_buffer() {
+    $in = ob_get_clean();
+
+	$in = preg_replace("#<link [^>]*wp-editor-font-css[^>]*/>#i", '',$in);//die('test');
+
+    echo $in; // output the result unless you want to remove it
+}
+add_action('wp_head','end_wp_head_buffer', PHP_INT_MAX);
