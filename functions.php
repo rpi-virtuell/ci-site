@@ -130,9 +130,9 @@ function ci_admin_add_taxonomy_dropdown_filters()
 
 
 /**
-	* Template Hooks
-	* @see woocomerce plugin: includes/wc_template_hooks.php
-*/
+ * Template Hooks
+ * @see woocomerce plugin: includes/wc_template_hooks.php
+ */
 /*
 function woocommerce_template_loop_product_title() {
 		echo '<h2 class="woocommerce-loop-product__title">' . $content . '</h2>';
@@ -140,18 +140,18 @@ function woocommerce_template_loop_product_title() {
 }
 */
 /**
-   Customizr prevents, to load the woocommerce/archive-product.php  template from childtheme
-   this Hack do the job
-*/
+Customizr prevents, to load the woocommerce/archive-product.php  template from childtheme
+this Hack do the job
+ */
 add_filter( 'template_include', 'template_load_archive_page', 200 );
 function template_load_archive_page($template){
-	if(strpos( $template ,'/archive-product.php')>0){
+    if(strpos( $template ,'/archive-product.php')>0){
 
-	  $template = get_stylesheet_directory( ). '/woocommerce/archive-product.php' ;
+        $template = get_stylesheet_directory( ). '/woocommerce/archive-product.php' ;
 
 
-	}
-	return $template;
+    }
+    return $template;
 }
 
 /**
@@ -177,9 +177,9 @@ function post_type_filter_func( $query) {
 
 /**
  * Füge "Einträge" an die Anzahl der Suchtreffer
-*/
+ */
 add_filter( 'facetwp_result_count', function( $output, $params ) {
-	return $output . ' Einträge';
+    return $output . ' Einträge';
 }, 10, 2 );
 
 /* template helper */
@@ -188,97 +188,97 @@ function print_excerpt($wordscount=20, $class = 'entry-summary' ) {
 
     $class = esc_attr( $class );
     ?>
-		<div class="<?php echo $class; ?>">
-			<?php
-                if(has_excerpt()){
-                    echo get_the_excerpt();
-                }else{
-	                echo wp_trim_words( get_the_content(), $wordscount );
-                }
-            ?>
-		</div><!-- .<?php echo $class; ?> -->
-	<?php
+    <div class="<?php echo $class; ?>">
+        <?php
+        if(has_excerpt()){
+            echo get_the_excerpt();
+        }else{
+            echo wp_trim_words( get_the_content(), $wordscount );
+        }
+        ?>
+    </div><!-- .<?php echo $class; ?> -->
+    <?php
 
 }
 function print_post_image( $dummy = "https://dummyimage.com/140x140/eeeeee/ffffff.png&amp;text=CI" ){
 
-	$imgsrc = get_the_post_thumbnail_url(get_the_ID(),'post-thumbnail');
-	if(!$imgsrc){
-	    $imgsrc = $dummy;
-	}
-	?><img   class="attachment-thumbnail size-thumbnail wp-post-image" src="<?php echo $imgsrc;?>" sizes="(max-width: 150px) 100vw, 150px" width="150"><?php
+    $imgsrc = get_the_post_thumbnail_url(get_the_ID(),'post-thumbnail');
+    if(!$imgsrc){
+        $imgsrc = $dummy;
+    }
+    ?><img   class="attachment-thumbnail size-thumbnail wp-post-image" src="<?php echo $imgsrc;?>" sizes="(max-width: 150px) 100vw, 150px" width="150"><?php
 
 
 }
 
 function has_post_image( ){
 
-	$imgsrc = get_the_post_thumbnail_url(get_the_ID(),'post-thumbnail');
-	if(!$imgsrc){
-	    return false;
+    $imgsrc = get_the_post_thumbnail_url(get_the_ID(),'post-thumbnail');
+    if(!$imgsrc){
+        return false;
 
-	}else{
-		return true;
-	}
+    }else{
+        return true;
+    }
 
 }
 
 function print_entry_date() {
 
     $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-/*
-	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
-	}
-*/
-	$time_string = sprintf(
-		$time_string,
-		esc_attr( ( 'c' ) ),
-		get_the_date( 'M Y'),
-		esc_attr( get_the_modified_date( 'c') ),
-		get_the_modified_date('M Y' )
-	);
+    /*
+        if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+            $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+        }
+    */
+    $time_string = sprintf(
+        $time_string,
+        esc_attr( ( 'c' ) ),
+        get_the_date( 'M Y'),
+        esc_attr( get_the_modified_date( 'c') ),
+        get_the_modified_date('M Y' )
+    );
 
 
-	printf(
-		'<span class="posted-on"><span class="screen-reader-text">%1$s</span><a href="%2$s" rel="bookmark">%3$s</a></span>',
-		__( 'Posted on' ),
+    printf(
+        '<span class="posted-on"><span class="screen-reader-text">%1$s</span><a href="%2$s" rel="bookmark">%3$s</a></span>',
+        __( 'Posted on' ),
         esc_url( get_permalink() ),
-		$time_string
+        $time_string
 
-	);
+    );
 }
 function get_tax_websites($rowtag = "li") {
 
-	if ( is_tax( 'thema' ) ) {
+    if ( is_tax( 'thema' ) ) {
 
-	    $tax = 'thema' ;
+        $tax = 'thema' ;
 
-	}elseif(is_tax('section') ){
+    }elseif(is_tax('section') ){
 
-		$tax = 'section' ;
+        $tax = 'section' ;
 
     }else{
-		return '';
+        return '';
     }
 
-	$query_obj = get_queried_object();
+    $query_obj = get_queried_object();
     $term_id   = $query_obj->term_id;
     $term = get_term($term_id);
 
     $sites = get_posts( array(
-            'tax_query' => array(array(
-                'taxonomy' => $tax,
-                'field' => 'slug',
-                'terms' => $term
-            )),
-            'post_type'  => 'network',
-			"post_status" => [
-				"publish"
-			],
-            'posts_per_page' => '-1',
-            'orderby' => 'post_title',
-            'order' => 'ASC'
+        'tax_query' => array(array(
+            'taxonomy' => $tax,
+            'field' => 'slug',
+            'terms' => $term
+        )),
+        'post_type'  => 'network',
+        "post_status" => [
+            "publish"
+        ],
+        'posts_per_page' => '-1',
+        'orderby' => 'post_title',
+        'order' => 'ASC'
 
     ) );
 
@@ -290,261 +290,261 @@ function get_tax_websites($rowtag = "li") {
     if(count ($sites)>0){
         return $html;
     }
-	return '';
+    return '';
 
 }
 function print_parent_themenbereich($header= "h3") {
-	if ( is_tax( 'thema' ) ) {
-		echo '<div class="sidebarBox">';
-		// Get the current section term id.
-		$query_obj = get_queried_object();
-		$term_id   = $query_obj->term_id;
-		$term = get_term($term_id);
-		echo '<'.$header.'>Themenbereich</'.$header.'>';
-		echo '<p class="currentSubject">'.$term->name.'</p>';
-		echo '</div>';
-	}
+    if ( is_tax( 'thema' ) ) {
+        echo '<div class="sidebarBox">';
+        // Get the current section term id.
+        $query_obj = get_queried_object();
+        $term_id   = $query_obj->term_id;
+        $term = get_term($term_id);
+        echo '<'.$header.'>Themenbereich</'.$header.'>';
+        echo '<p class="currentSubject">'.$term->name.'</p>';
+        echo '</div>';
+    }
 }
 function print_parent_arbeitsbereich($header= "h3"){
-	if ( is_tax('section') ) {
-		echo '<div class="sidebarBox">';
-		// Get the current section term id.
-		$query_obj = get_queried_object();
-		$term_id   = $query_obj->term_id;
-		if($p=get_ancestors($term_id, 'section', 'taxonomy')){
+    if ( is_tax('section') ) {
+        echo '<div class="sidebarBox">';
+        // Get the current section term id.
+        $query_obj = get_queried_object();
+        $term_id   = $query_obj->term_id;
+        if($p=get_ancestors($term_id, 'section', 'taxonomy')){
 
-		    $parent_term_id= $p[0];
+            $parent_term_id= $p[0];
 
-			$term = get_term($term_id);
+            $term = get_term($term_id);
 
-			echo '<'.$header.'>Arbeitsbereich<br>';
-			echo get_term_parents_list( $term_id, 'section',array('inclusive'=>false,'separator'=>'<br>' ) );
-			echo '</'.$header.'>';
-/*			echo '<p><strong>Aufgabenbereich:</strong><br>'.
-			     $term->name;
-                 '</p>';
-*/
-			$term_children = get_term_children( $parent_term_id, 'section' ) ;
+            echo '<'.$header.'>Arbeitsbereich<br>';
+            echo get_term_parents_list( $term_id, 'section',array('inclusive'=>false,'separator'=>'<br>' ) );
+            echo '</'.$header.'>';
+            /*			echo '<p><strong>Aufgabenbereich:</strong><br>'.
+                             $term->name;
+                             '</p>';
+            */
+            $term_children = get_term_children( $parent_term_id, 'section' ) ;
             if($term_children){
-	            echo '<h3>Aufgaben</h3>';
+                echo '<h3>Aufgaben</h3>';
                 echo '<ul>';
 
-	            foreach ( $term_children as $child ) {
-		            $term_child = get_term_by( 'id', $child, 'section' );
-		            if($term_child == $term){
-			            echo '<li><strong>' . $term_child->name . '</strong></li>';
-		            }else{
-			            echo '<li><a href="' . get_term_link( $child, 'section' ) . '">' . $term_child->name . '</a></li>';
-		            }
+                foreach ( $term_children as $child ) {
+                    $term_child = get_term_by( 'id', $child, 'section' );
+                    if($term_child == $term){
+                        echo '<li><strong>' . $term_child->name . '</strong></li>';
+                    }else{
+                        echo '<li><a href="' . get_term_link( $child, 'section' ) . '">' . $term_child->name . '</a></li>';
+                    }
 
-	            }
-	            echo '</ul>';
+                }
+                echo '</ul>';
             }
 
 
 
         }else{
-			echo '<'.$header.'>Aufgaben</'.$header.'>';
-			echo '<ul>';
-			$term_children = get_term_children( $term_id, 'section' ) ;
-			rsort($term_children);
+            echo '<'.$header.'>Aufgaben</'.$header.'>';
+            echo '<ul>';
+            $term_children = get_term_children( $term_id, 'section' ) ;
+            rsort($term_children);
             foreach ( $term_children as $child ) {
                 $term = get_term_by( 'id', $child, 'section' );
                 echo '<li><a href="' . get_term_link( $child, 'section' ) . '">' . $term->name . '</a></li>';
             }
             echo '</ul>';
         }
-		echo '</div>';
-	}
+        echo '</div>';
+    }
 }
 
 function get_content_type(){
-	$postType = get_post_type( get_the_ID() );
-	switch( strtolower($postType)){
-		case 'product':
-			$postType = get_the_term_list( get_the_ID(), 'medientyp','', ' · ','' );
-			break;
-		case 'network':
-			$postType = 'Website';
-			break;
-		case 'page':
-			$postType = '';
-			break;
-		case 'post':
-			$postType = 'Blog';
-			break;
-		case 'publikation':
-			$postType = 'Publikation';
-			break;
-		case 'event':
-			$postType = 'Veranstaltung';
-			break;
-		case 'project':
-			$postType = 'Projekt';
-			break;
-		case 'dienstleistung':
-			$postType = 'Service';
-			break;
-		case 'person':
-			$postType = 'Mitarbeiter_in / Autor_in';
-			break;
-	}
-	return $postType;
+    $postType = get_post_type( get_the_ID() );
+    switch( strtolower($postType)){
+        case 'product':
+            $postType = get_the_term_list( get_the_ID(), 'medientyp','', ' · ','' );
+            break;
+        case 'network':
+            $postType = 'Website';
+            break;
+        case 'page':
+            $postType = '';
+            break;
+        case 'post':
+            $postType = 'Blog';
+            break;
+        case 'publikation':
+            $postType = 'Publikation';
+            break;
+        case 'event':
+            $postType = 'Veranstaltung';
+            break;
+        case 'project':
+            $postType = 'Projekt';
+            break;
+        case 'dienstleistung':
+            $postType = 'Service';
+            break;
+        case 'person':
+            $postType = 'Mitarbeiter_in / Autor_in';
+            break;
+    }
+    return $postType;
 }
 
 function get_facetwp_pots_type_template_slug($archive = 'archive'){
 
 
     $type = get_queried_object();
-	if(is_a($type, 'WP_Post')){
-		$slug = $type->post_name;
-	}else{
-		return $archive ;
-	}
-	
-	if(is_shop()){
-		return 'product';
+    if(is_a($type, 'WP_Post')){
+        $slug = $type->post_name;
+    }else{
+        return $archive ;
     }
-	switch( strtolower($slug)){
-		case 'product':
-		case 'network':
-		case 'page':
-		case 'post':
-		case 'publikation':
-		case 'event':
-		case 'project':
-		case 'person':
-		case 'dienstleistung':
-		    return $slug;
-			break;
-        default:
-	        return $archive;
 
-	}
+    if(is_shop()){
+        return 'product';
+    }
+    switch( strtolower($slug)){
+        case 'product':
+        case 'network':
+        case 'page':
+        case 'post':
+        case 'publikation':
+        case 'event':
+        case 'project':
+        case 'person':
+        case 'dienstleistung':
+            return $slug;
+            break;
+        default:
+            return $archive;
+
+    }
 }
 
 function load_templatepart($file, $template_name = false){
 
     global $fwp_template_name;
-	if ( $template_file = locate_template( 'templates/'. $file  ) ) {
-		$fwp_template_name = $template_name;
-		require_once( $template_file );
+    if ( $template_file = locate_template( 'templates/'. $file  ) ) {
+        $fwp_template_name = $template_name;
+        require_once( $template_file );
 
-	}else{
-	    echo "file error: Template not found!";
+    }else{
+        echo "file error: Template not found!";
     }
 }
 
 function the_archive_loop( $default = 'archive'){
 
-	$template_name = get_facetwp_pots_type_template_slug($default);
-	
+    $template_name = get_facetwp_pots_type_template_slug($default);
 
-	load_templatepart('facetwp/archive-loop.php', $template_name);
+
+    load_templatepart('facetwp/archive-loop.php', $template_name);
 
 }
 add_shortcode( 'ci_article_teaser' , 'the_archive_loop' );
 
 
 function include_facetwp_article(){
-	include get_stylesheet_directory( ) . "/templates/facetwp/loop-post.php";
+    include get_stylesheet_directory( ) . "/templates/facetwp/loop-post.php";
 }
 
 function load_details_template(){
 
-	$file =  get_stylesheet_directory( ) .
-             "/templates/facetwp/" . get_post_type( get_the_ID() ).'-details.php';
+    $file =  get_stylesheet_directory( ) .
+        "/templates/facetwp/" . get_post_type( get_the_ID() ).'-details.php';
 
 
     if(file_exists($file)){
-	    include ($file) ;
+        include ($file) ;
     }else{
-	    print_excerpt(15 );
+        print_excerpt(15 );
     }
 }
 
 
 
-function ci_post_query( $q ){ 
-	//var_dump($query);die();
+function ci_post_query( $q ){
+    //var_dump($query);die();
 }
-add_action( 'woocommerce_product_query', 'ci_post_query' ); 
+add_action( 'woocommerce_product_query', 'ci_post_query' );
 
 function get_query_all_tax_in_tax($resulttax = 'thema', $filtertax='section'){
 
-	$terms = get_terms( array(
-		'taxonomy' => $resulttax,
-		'hide_empty' => false,
-	) );
+    $terms = get_terms( array(
+        'taxonomy' => $resulttax,
+        'hide_empty' => false,
+    ) );
 
     $slugs = array();
-	foreach ($terms as  $term){
-		$slugs[]=$term->slug;
+    foreach ($terms as  $term){
+        $slugs[]=$term->slug;
     }
 
-	$args = array(
-	    'posts_per_page' => 100000,
+    $args = array(
+        'posts_per_page' => 100000,
         'post_type' =>[
-			"publikation",
-			"event",
-			"network",
-			"project",
-			"post",
-			"page",
-			"product"
-		],
-		"post_status" => [
-			"publish"
-		],
-		'tax_query' => array(
-			array(
-				'relation' => 'AND',
-				array(
-					'taxonomy' => $filtertax,
-					'field'    => 'slug',
-					'terms'    => array( get_query_var( $filtertax ) ),
-				),
-				array(
-					'taxonomy' => $resulttax,
-					'field'    => 'slug',
-					'terms'    => $slugs
+            "publikation",
+            "event",
+            "network",
+            "project",
+            "post",
+            "page",
+            "product"
+        ],
+        "post_status" => [
+            "publish"
+        ],
+        'tax_query' => array(
+            array(
+                'relation' => 'AND',
+                array(
+                    'taxonomy' => $filtertax,
+                    'field'    => 'slug',
+                    'terms'    => array( get_query_var( $filtertax ) ),
+                ),
+                array(
+                    'taxonomy' => $resulttax,
+                    'field'    => 'slug',
+                    'terms'    => $slugs
 
-				),
-			),
-		),
-	);
-	$pp = new WP_Query( $args );
-	$tax_ids = array();
-	if ( $pp->have_posts() ) {
-		while ( $pp->have_posts() ) {
-			$pp->the_post();
-			$tax_ids =  array_merge(wp_get_object_terms(get_the_ID(), $resulttax,  array('fields' => 'slugs')),$tax_ids);
-		}
-		/* Restore original Post Data */
-		wp_reset_postdata();
-	}
-	$tax_ids = array_unique($tax_ids);
-	
-	if(count($tax_ids)<1){
-		return false;
-	}
-	
-	sort($tax_ids);
+                ),
+            ),
+        ),
+    );
+    $pp = new WP_Query( $args );
+    $tax_ids = array();
+    if ( $pp->have_posts() ) {
+        while ( $pp->have_posts() ) {
+            $pp->the_post();
+            $tax_ids =  array_merge(wp_get_object_terms(get_the_ID(), $resulttax,  array('fields' => 'slugs')),$tax_ids);
+        }
+        /* Restore original Post Data */
+        wp_reset_postdata();
+    }
+    $tax_ids = array_unique($tax_ids);
+
+    if(count($tax_ids)<1){
+        return false;
+    }
+
+    sort($tax_ids);
 
     $list_elements = '';
-	foreach ($terms as  $term){
-		if (in_array($term->slug, $tax_ids)){
+    foreach ($terms as  $term){
+        if (in_array($term->slug, $tax_ids)){
 
             $list_elements .= '<li><a href="/'.$resulttax.'/'.$term->slug.'">' . $term->name . '</a></li>';
 
-		}
-	}
-	return '<ul>' .$list_elements. '</ul>';
+        }
+    }
+    return '<ul>' .$list_elements. '</ul>';
 
 }
 
 function fwp_add_facet_labels() {
-	?>
+    ?>
     <script>
         (function($) {
             $(document).on('facetwp-loaded', function() {
@@ -561,7 +561,7 @@ function fwp_add_facet_labels() {
             });
         })(jQuery);
     </script>
-	<?php
+    <?php
 }
 add_action( 'wp_head', 'fwp_add_facet_labels', 100 );
 
@@ -572,14 +572,14 @@ add_action( 'wp_head', 'fwp_add_facet_labels', 100 );
  */
 
 function modify_poduct_archive_query( $query ) {
-	if ( $query->is_tax() && $query->is_main_query() && !is_admin()) {
+    if ( $query->is_tax() && $query->is_main_query() && !is_admin()) {
 
-		$query->set('post_type',array(
-		        'post',
-		        'product',
-		        'publikation'
+        $query->set('post_type',array(
+            'post',
+            'product',
+            'publikation'
         ));
-	}
+    }
 
 }
 add_action( 'pre_get_posts', 'modify_poduct_archive_query' );
@@ -598,19 +598,33 @@ add_action( 'pre_get_posts', 'modify_poduct_archive_query' );
 });*/
 
 
+add_action( 'wp_footer', function() {
+    ?>
+    <script>
+        document.addEventListener('facetwp-refresh', function() {
+            if (FWP.loaded) {
+                FWP.setHash();
+                window.location.reload();
+            }
+        });
+    </script>
+    <?php
+}, 100 );
+
+
 /***************************************************************************
  * Anpassung für Internetexplorer
  * eigenes style hinzufügen
  */
 function ci_script_scripts_add_style() {
-    
-	global $is_IE;
-	if($is_IE ){
-		wp_enqueue_style('ie-main-style', czr_fn_get_theme_file_url( "ie-main-style.css") );	
-	}
-	wp_enqueue_style('theme-style', czr_fn_get_theme_file_url( "editor-style.css") );
-	wp_enqueue_style('theme-style', czr_fn_get_theme_file_url( "bootstrap.css") );
-	
+
+    global $is_IE;
+    if($is_IE ){
+        wp_enqueue_style('ie-main-style', czr_fn_get_theme_file_url( "ie-main-style.css") );
+    }
+    wp_enqueue_style('theme-style', czr_fn_get_theme_file_url( "editor-style.css") );
+    wp_enqueue_style('theme-style', czr_fn_get_theme_file_url( "bootstrap.css") );
+
 }
 add_action( 'wp_enqueue_scripts', 'ci_script_scripts_add_style', 9 );
 
@@ -620,13 +634,13 @@ add_action( 'wp_enqueue_scripts', 'ci_script_scripts_add_style', 9 );
  */
 
 function ci_remove_scripts_style() {
-    
-	global $is_IE;
-	if($is_IE ){
-		wp_deregister_style('customizr-main');
-		wp_add_inline_style( 'ie-main-style'      , apply_filters( 'czr_user_options_style' , '' ) );
-	}
-   
+
+    global $is_IE;
+    if($is_IE ){
+        wp_deregister_style('customizr-main');
+        wp_add_inline_style( 'ie-main-style'      , apply_filters( 'czr_user_options_style' , '' ) );
+    }
+
 }
 add_action( 'wp_enqueue_scripts', 'ci_remove_scripts_style', 11 );
 
@@ -657,9 +671,9 @@ add_action( 'wp_enqueue_scripts', 'wpb_adding_scripts' );
  */
 add_action('wp_head', function(){
 
-	if(!is_page()){
-		add_filter( "czr_do_render_view_singular_thumbnail", '__return_false' );
-	}
+    if(!is_page()){
+        add_filter( "czr_do_render_view_singular_thumbnail", '__return_false' );
+    }
 
 });
 
@@ -673,7 +687,7 @@ add_action('wp_head','start_wp_head_buffer',0);
 function end_wp_head_buffer() {
     $in = ob_get_clean();
 
-	$in = preg_replace("#<link [^>]*wp-editor-font-css[^>]*/>#i", '',$in);//die('test');
+    $in = preg_replace("#<link [^>]*wp-editor-font-css[^>]*/>#i", '',$in);//die('test');
 
     echo $in; // output the result unless you want to remove it
 }
